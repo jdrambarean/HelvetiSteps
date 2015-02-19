@@ -38,7 +38,7 @@ class SecondViewController: UIViewController {
     let distanceUnit = HKUnit.countUnit()
     
     func requestHealthKitAuthorization() {
-        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount)
+        let dataTypesToRead = NSSet(objects: healthKitManager.distanceCount)
         healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead, completion: { [unowned self] (success, error) in
             if success {
                 self.queryDistanceSum()

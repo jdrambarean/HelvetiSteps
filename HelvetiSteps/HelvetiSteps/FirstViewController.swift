@@ -15,6 +15,7 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestHealthKitAuthorization()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -25,7 +26,6 @@ class FirstViewController: UIViewController {
 
     
     @IBOutlet var stepsLabel: UILabel!
-    @IBOutlet var milesLabel: UILabel!
     
     //These are the variables for all of the components of the app
 
@@ -37,18 +37,28 @@ class FirstViewController: UIViewController {
     
     let stepsUnit = HKUnit.countUnit()
     
+    func requestHealthKitAuthorization() {
+        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount)
+        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead, completion: { [unowned self] (success, error) in
+            if success {
+                self.queryStepsSum()
+            } else {
+                println(error.description)
+            }
+        })
+    }
+
+    
     func queryStepsSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
-        let predicate = NSPredicate()
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                
                 let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
-                self.stepsLabel.text = "\(numberOfSteps) total"
+                self.stepsLabel.text = "\(numberOfSteps)"
             }
-            
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }

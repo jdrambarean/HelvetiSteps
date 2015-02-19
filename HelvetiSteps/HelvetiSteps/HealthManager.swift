@@ -28,7 +28,9 @@ class HealthKitManager {
         }()
     
     let stepsCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+    let distanceCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)
     
     let stepsUnit = HKUnit.countUnit()
+    let distanceUnit = HKUnit.countUnit()
 }
 

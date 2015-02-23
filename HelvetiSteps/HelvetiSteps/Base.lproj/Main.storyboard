@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--First View Controller-->
@@ -17,31 +18,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kd-VB-UwK">
-                                <rect key="frame" x="130" y="132" width="341" height="124"/>
+                                <rect key="frame" x="16" y="132" width="506" height="189"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="100"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvi-Q5-Own">
+                                <rect key="frame" x="229" y="329" width="142" height="63"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="S">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="HelveticaNeue-Bold"/>
+                                            <font key="NSOriginalFont" size="48" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="teps">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="HelveticaNeue-Thin"/>
+                                            <font key="NSOriginalFont" size="48" name="HelveticaNeue-Thin"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="3Kd-VB-UwK" secondAttribute="centerX" id="0Dn-wG-4kL"/>
+                            <constraint firstAttribute="centerX" secondItem="hvi-Q5-Own" secondAttribute="centerX" id="IcG-Mz-kYQ"/>
                             <constraint firstAttribute="centerY" secondItem="3Kd-VB-UwK" secondAttribute="centerY" id="qm5-Mg-FCr"/>
+                            <constraint firstItem="hvi-Q5-Own" firstAttribute="top" secondItem="3Kd-VB-UwK" secondAttribute="bottom" constant="8" id="skj-Xr-xCW"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" image="first" selectedImage="first" id="acW-dT-cKf">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="1"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="noun_19727_cc" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="stepsLabel" destination="3Kd-VB-UwK" id="9sI-WO-Em9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="736" y="-386"/>
         </scene>
-        <!--Miles-->
+        <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,15 +82,37 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5f-Lx-h5g">
+                                <rect key="frame" x="228" y="370" width="142" height="63"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="M">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="iles">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="48" name="HelveticaNeue-Thin"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="b10-Y6-wcg" secondAttribute="centerX" id="HKg-j9-IUu"/>
+                            <constraint firstItem="J5f-Lx-h5g" firstAttribute="top" secondItem="b10-Y6-wcg" secondAttribute="bottom" constant="8" id="Lbr-pr-QLD"/>
+                            <constraint firstAttribute="centerX" secondItem="J5f-Lx-h5g" secondAttribute="centerX" id="VAk-ii-cHG"/>
                             <constraint firstAttribute="centerY" secondItem="b10-Y6-wcg" secondAttribute="centerY" id="akd-nM-sVv"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Miles" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="noun_7939_cc" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="milesLabel" destination="b10-Y6-wcg" id="Zlm-Th-wQ3"/>
                     </connections>
@@ -75,6 +120,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SSC-eR-D7o">
+            <objects>
+                <viewController id="eoH-Uj-mJa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xMH-KY-3dw"/>
+                        <viewControllerLayoutGuide type="bottom" id="NYo-Ah-gov"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w5W-bk-bnB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQ4-Nx-bpc">
+                                <rect key="frame" x="65" y="126" width="506" height="189"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="150"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Screen Shot 2015-02-19 at 10.00.50 PM" translatesAutoresizingMaskIntoConstraints="NO" id="Z0m-JB-pYf">
+                                <rect key="frame" x="124" y="379" width="136" height="96"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Screen Shot 2015-02-19 at 10.00.37 PM" translatesAutoresizingMaskIntoConstraints="NO" id="fGq-U9-c0o">
+                                <rect key="frame" x="283" y="379" width="107" height="96"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="DQ4-Nx-bpc" secondAttribute="centerY" id="VbX-LO-zZ8"/>
+                            <constraint firstAttribute="centerX" secondItem="DQ4-Nx-bpc" secondAttribute="centerX" id="Zug-Oc-fCH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fGq-U9-c0o" secondAttribute="trailing" constant="194" id="aqh-SK-WKO"/>
+                            <constraint firstItem="Z0m-JB-pYf" firstAttribute="leading" secondItem="w5W-bk-bnB" secondAttribute="leadingMargin" constant="108" id="yjd-TY-NAa"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pgm-j0-VCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546" y="-128"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -97,8 +183,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Screen Shot 2015-02-19 at 10.00.37 PM" width="266" height="252"/>
+        <image name="Screen Shot 2015-02-19 at 10.00.50 PM" width="248" height="254"/>
+        <image name="noun_19727_cc" width="20" height="27"/>
+        <image name="noun_7939_cc" width="40" height="18"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

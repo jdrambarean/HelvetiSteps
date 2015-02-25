@@ -112,7 +112,7 @@
                             <constraint firstAttribute="centerY" secondItem="b10-Y6-wcg" secondAttribute="centerY" id="akd-nM-sVv"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="noun_7939_cc" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="Distance Icon" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="milesLabel" destination="b10-Y6-wcg" id="Zlm-Th-wQ3"/>
                     </connections>
@@ -166,7 +166,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController extendedLayoutIncludesOpaqueBars="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -183,10 +183,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Distance Icon" width="40" height="41"/>
         <image name="Screen Shot 2015-02-19 at 10.00.37 PM" width="266" height="252"/>
         <image name="Screen Shot 2015-02-19 at 10.00.50 PM" width="248" height="254"/>
         <image name="noun_19727_cc" width="20" height="27"/>
-        <image name="noun_7939_cc" width="40" height="18"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -16,6 +16,7 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        queryDistanceSum()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -46,6 +47,10 @@ class SecondViewController: UIViewController {
                 println(error.description)
             }
         })
+    }
+    
+    @IBAction func refresh() {
+    queryDistanceSum()
     }
     
     func queryDistanceSum() {

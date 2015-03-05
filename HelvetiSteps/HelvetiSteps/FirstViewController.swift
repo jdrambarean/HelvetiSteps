@@ -16,6 +16,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        queryStepsSum()
+
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -46,6 +48,11 @@ class FirstViewController: UIViewController {
                 println(error.description)
             }
         })
+    }
+    
+    
+    @IBAction func refresh() {
+        queryStepsSum()
     }
 
     

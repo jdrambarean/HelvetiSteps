@@ -105,6 +105,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "HelvetiSteps"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

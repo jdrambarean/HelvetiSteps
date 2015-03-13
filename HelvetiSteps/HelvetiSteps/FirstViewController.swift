@@ -16,14 +16,10 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
-        queryStepsSum()
-
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     
@@ -50,11 +46,15 @@ class FirstViewController: UIViewController {
         })
     }
     
-    
-    @IBAction func refresh() {
-        queryStepsSum()
+    @IBAction func stepsButton() {
+        self.stepsLabel.text = "Loading"
+        self.queryStepsSum()
     }
-
+    
+    @IBAction func milesButton() {
+        self.stepsLabel.text = "Loading"
+        self.queryDistanceSum()
+    }
     
     func queryStepsSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
@@ -63,16 +63,31 @@ class FirstViewController: UIViewController {
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
+                var numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
                 self.stepsLabel.text = "\(numberOfSteps)"
             }
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }
-
-
-
+    
+    func queryDistanceSum() {
+        let sumOption = HKStatisticsOptions.CumulativeSum
+        let startDate = NSDate().dateByRemovingTime()
+        let endDate = NSDate()
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
+        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.distanceCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
+            if let sumQuantity = result?.sumQuantity() {
+                var totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
+                self.stepsLabel.text = "\(totalDistance)"
+            }
+        }
+        healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
+    }
+    
 }
+
+
+
 
 extension NSDate {
     func dateByRemovingTime() -> NSDate {

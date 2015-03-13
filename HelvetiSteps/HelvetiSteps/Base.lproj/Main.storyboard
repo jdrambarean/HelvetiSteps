@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9pv-A4-QxB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--steps-->
@@ -16,18 +16,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kd-VB-UwK">
-                                <rect key="frame" x="165" y="250" width="269.5" height="97.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kd-VB-UwK">
+                                <rect key="frame" x="165" y="252" width="270" height="98"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="j6B-xf-Teh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="92" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7MK-M1-nie">
+                                <rect key="frame" x="165" y="414" width="92" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="l4X-NR-1Qx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                <state key="normal" title="  Steps" image="Steps">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stepsButton" destination="9pv-A4-QxB" eventType="touchUpInside" id="fqg-EM-jZw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="92" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zq9-6j-8wZ">
+                                <rect key="frame" x="349" y="414" width="92" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                <state key="normal" title="   Miles" image="Miles">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="milesButton" destination="9pv-A4-QxB" eventType="touchUpInside" id="vq1-ap-EkO"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="3Kd-VB-UwK" secondAttribute="centerX" id="0Dn-wG-4kL"/>
-                            <constraint firstAttribute="centerY" secondItem="3Kd-VB-UwK" secondAttribute="centerY" id="qm5-Mg-FCr"/>
+                            <constraint firstItem="7MK-M1-nie" firstAttribute="top" secondItem="3Kd-VB-UwK" secondAttribute="bottom" constant="64" id="9lJ-iA-qCt"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="7MK-M1-nie" secondAttribute="bottom" constant="107" id="CIr-L7-8s3"/>
+                            <constraint firstItem="7MK-M1-nie" firstAttribute="leading" secondItem="3Kd-VB-UwK" secondAttribute="leading" id="Med-8M-6ZE"/>
+                            <constraint firstItem="7MK-M1-nie" firstAttribute="baseline" secondItem="zq9-6j-8wZ" secondAttribute="baseline" id="Q66-qz-ov6"/>
+                            <constraint firstItem="zq9-6j-8wZ" firstAttribute="leading" secondItem="7MK-M1-nie" secondAttribute="trailing" constant="92" id="XIP-5k-Qys"/>
+                            <constraint firstItem="3Kd-VB-UwK" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="232" id="syB-sC-REp"/>
+                            <constraint firstItem="3Kd-VB-UwK" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="xJH-9K-mtT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="steps" image="Steps" id="acW-dT-cKf"/>
@@ -38,6 +70,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="736" y="-386"/>
+        </scene>
+        <!--HelvetiSteps-->
+        <scene sceneID="4Nl-hA-a4F">
+            <objects>
+                <viewController title="HelvetiSteps" id="OhD-1v-vAT" customClass="FirstViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6O9-tX-fYg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lha-T5-ECC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Oc-6q-RhZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZL5-6k-hs8">
+                                <rect key="frame" x="156" y="94.5" width="269.5" height="97.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHU-9r-Eez">
+                                <rect key="frame" x="245" y="206" width="92" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="8"/>
+                                <state key="normal" image="Steps">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapTarget" destination="OhD-1v-vAT" eventType="touchUpInside" id="EcC-F3-Ke5"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4j-94-mkT">
+                                <rect key="frame" x="-6" y="322" width="600" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2L-aD-m0r">
+                                        <rect key="frame" x="156" y="24.5" width="269.5" height="97.5"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5V-fx-oeR">
+                                        <rect key="frame" x="245" y="136" width="92" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="8"/>
+                                        <state key="normal" image="Miles">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="H2L-aD-m0r" secondAttribute="centerX" id="1gR-BQ-eAa"/>
+                                    <constraint firstAttribute="centerX" secondItem="J5V-fx-oeR" secondAttribute="centerX" id="D7h-9E-FYA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ZL5-6k-hs8" secondAttribute="centerX" id="1Cu-73-v70"/>
+                            <constraint firstAttribute="centerX" secondItem="jHU-9r-Eez" secondAttribute="centerX" id="WRI-cT-OLT"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <connections>
+                        <outlet property="stepsLabel" destination="ZL5-6k-hs8" id="0uz-q4-Ena"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gm7-j0-Zh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="836"/>
         </scene>
         <!--miles-->
         <scene sceneID="wg7-f3-ORb">
@@ -78,7 +181,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController extendedLayoutIncludesOpaqueBars="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -98,5 +201,5 @@
         <image name="Miles" width="30" height="30"/>
         <image name="Steps" width="30" height="30"/>
     </resources>
-    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

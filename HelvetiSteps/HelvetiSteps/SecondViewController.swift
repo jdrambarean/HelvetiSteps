@@ -16,7 +16,6 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
-        queryDistanceSum()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -49,9 +48,6 @@ class SecondViewController: UIViewController {
         })
     }
     
-    @IBAction func refresh() {
-    queryDistanceSum()
-    }
     
     func queryDistanceSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
@@ -60,7 +56,7 @@ class SecondViewController: UIViewController {
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.distanceCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                let totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
+                var totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
                 self.milesLabel.text = "\(totalDistance)"
             }
         }

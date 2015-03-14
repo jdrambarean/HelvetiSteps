@@ -39,8 +39,7 @@
                                 </segments>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="milesButton" destination="OhD-1v-vAT" eventType="valueChanged" id="ISx-Kv-UMB"/>
-                                    <action selector="stepsButton" destination="OhD-1v-vAT" eventType="valueChanged" id="6Zo-90-Wex"/>
+                                    <action selector="indexChanged:" destination="OhD-1v-vAT" eventType="valueChanged" id="Nap-eP-UXM"/>
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTk-sH-0Ub">
@@ -67,6 +66,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="segmentedControl" destination="rai-8W-S7q" id="bSq-gf-Xe8"/>
                         <outlet property="stepsLabel" destination="jTk-sH-0Ub" id="cQC-S1-9sk"/>
                     </connections>
                 </viewController>

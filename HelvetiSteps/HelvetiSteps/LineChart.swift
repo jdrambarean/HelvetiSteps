@@ -49,10 +49,10 @@ class LineChart: UIControl {
     var axesColor = UIColor(red: 96/255.0, green: 125/255.0, blue: 139/255.0, alpha: 1)
     
     // #f69988
-    var positiveAreaColor = UIColor(red: 246/255.0, green: 153/255.0, blue: 136/255.0, alpha: 1)
+    var positiveAreaColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1)
     
     // #72d572
-    var negativeAreaColor = UIColor(red: 114/255.0, green: 213/255.0, blue: 114/255.0, alpha: 1)
+    var negativeAreaColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1)
     
     var areaBetweenLines = [-1, -1]
     

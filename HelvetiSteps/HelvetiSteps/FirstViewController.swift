@@ -9,13 +9,46 @@
 import UIKit
 import HealthKit
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, LineChartDelegate {
 
     let healthKitManager = HealthKitManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        //activityIndicator.startAnimating()
+        
+        var views: Dictionary<String, AnyObject> = [:]
+        
+        label.text = "..."
+        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.textAlignment = NSTextAlignment.Center
+        self.view.addSubview(label)
+        views["label"] = label
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: nil, metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-350-[label]", options: nil, metrics: nil, views: views))
+        
+        var data: Array<CGFloat> = [3, 4, 9, 11, 13, 15]
+        var data2: Array<CGFloat> = [1, 3, 5, 13, 17, 20]
+        
+        lineChart = LineChart()
+        lineChart!.areaUnderLinesVisible = true
+        lineChart!.addLine(data)
+        lineChart!.addLine(data2)
+        lineChart!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        lineChart!.delegate = self
+        self.view.addSubview(lineChart!)
+        views["chart"] = lineChart
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: nil, metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: nil, metrics: nil, views: views))
+        
+        var delta: Int64 = 4 * Int64(NSEC_PER_SEC)
+        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.lineChart!.clear()
+            self.lineChart!.addLine(data2)
+        });
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +61,9 @@ class FirstViewController: UIViewController {
     //These are the variables for all of the components of the app
 
     var steps = [HKQuantitySample]()
+    
+    var label = UILabel()
+    var lineChart: LineChart?
     
     var stepsToDisplay = 0
     
@@ -54,6 +90,26 @@ class FirstViewController: UIViewController {
     @IBAction func milesButton() {
         self.stepsLabel.text = "Loading"
         self.queryDistanceSum()
+    }
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            self.stepsLabel.text = "Loading"
+            self.queryStepsSum()
+        case 1:
+            self.stepsLabel.text = "Loading"
+            self.queryDistanceSum()
+        default:
+            break;
+        }
+    }
+    
+    func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
+        label.text = "x: \(x)     y: \(yValues)"
     }
     
     func queryStepsSum() {

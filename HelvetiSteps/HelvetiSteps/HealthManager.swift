@@ -32,5 +32,19 @@ class HealthKitManager {
     
     let stepsUnit = HKUnit.countUnit()
     let distanceUnit = HKUnit(fromString: "mi")
+    
+    func queryStepsData() {
+        let sumOption = HKStatisticsOptions.CumulativeSum
+        let startDate = NSDate().dateByRemovingTime()
+        let endDate = NSDate()
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
+        let statisticsSumQuery = HKStatisticsQuery(quantityType: self.distanceCount, quantitySamplePredicate: predicate, options: nil) { [unowned self] (query, result, error) in
+            if let sumQuantity = result?.sumQuantity() {
+                var totalDistance = Int(sumQuantity.doubleValueForUnit(self.distanceUnit))
+    
+            }
+        }
+        self.healthStore?.executeQuery(statisticsSumQuery)
+    }
 }
 

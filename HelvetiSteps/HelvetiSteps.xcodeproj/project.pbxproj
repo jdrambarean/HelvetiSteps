@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571FACB41AB3961B009C0DD7 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571FACB31AB3961B009C0DD7 /* LineChart.swift */; };
+		571FACB61AB49395009C0DD7 /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571FACB51AB49395009C0DD7 /* DotCALayer.swift */; };
+		571FACB81AB499F1009C0DD7 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571FACB71AB499F1009C0DD7 /* StepsViewController.swift */; };
 		57466DD31A955F9400655632 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57466DD21A955F9400655632 /* AppDelegate.swift */; };
 		57466DD51A955F9400655632 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57466DD41A955F9400655632 /* FirstViewController.swift */; };
-		57466DD71A955F9400655632 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57466DD61A955F9400655632 /* SecondViewController.swift */; };
 		57466DDA1A955F9400655632 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57466DD81A955F9400655632 /* Main.storyboard */; };
 		57466DDC1A955F9400655632 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57466DDB1A955F9400655632 /* Images.xcassets */; };
 		57466DDF1A955F9400655632 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57466DDD1A955F9400655632 /* LaunchScreen.xib */; };
@@ -29,11 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		571FACB31AB3961B009C0DD7 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		571FACB51AB49395009C0DD7 /* DotCALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
+		571FACB71AB499F1009C0DD7 /* StepsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsViewController.swift; sourceTree = "<group>"; };
 		57466DCD1A955F9400655632 /* HelvetiSteps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelvetiSteps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57466DD11A955F9400655632 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57466DD21A955F9400655632 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57466DD41A955F9400655632 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		57466DD61A955F9400655632 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		57466DD91A955F9400655632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57466DDB1A955F9400655632 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57466DDE1A955F9400655632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -88,9 +92,11 @@
 			children = (
 				57466DF61A95601400655632 /* HelvetiSteps.entitlements */,
 				57466DD21A955F9400655632 /* AppDelegate.swift */,
+				571FACB31AB3961B009C0DD7 /* LineChart.swift */,
+				571FACB51AB49395009C0DD7 /* DotCALayer.swift */,
+				571FACB71AB499F1009C0DD7 /* StepsViewController.swift */,
 				57466DD41A955F9400655632 /* FirstViewController.swift */,
 				57466DF71A9560AF00655632 /* HealthManager.swift */,
-				57466DD61A955F9400655632 /* SecondViewController.swift */,
 				57466DD81A955F9400655632 /* Main.storyboard */,
 				57466DDB1A955F9400655632 /* Images.xcassets */,
 				57466DDD1A955F9400655632 /* LaunchScreen.xib */,
@@ -230,10 +236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57466DD71A955F9400655632 /* SecondViewController.swift in Sources */,
+				571FACB61AB49395009C0DD7 /* DotCALayer.swift in Sources */,
 				57466DD31A955F9400655632 /* AppDelegate.swift in Sources */,
 				57466DD51A955F9400655632 /* FirstViewController.swift in Sources */,
 				57466DF81A9560AF00655632 /* HealthManager.swift in Sources */,
+				571FACB81AB499F1009C0DD7 /* StepsViewController.swift in Sources */,
+				571FACB41AB3961B009C0DD7 /* LineChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

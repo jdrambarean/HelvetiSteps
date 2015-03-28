@@ -12,6 +12,8 @@ import HealthKit
 class FirstViewController: UIViewController, LineChartDelegate {
 
     let healthKitManager = HealthKitManager.sharedInstance
+    @IBOutlet var SegmentedControl: UISegmentedControl!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +60,8 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     @IBOutlet var stepsLabel: UILabel!
     
+    
+    
     //These are the variables for all of the components of the app
 
     var steps = [HKQuantitySample]()
@@ -83,36 +87,37 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     @IBAction func stepsButton() {
-        self.stepsLabel.text = "Loading"
+        self.stepsLabel.text = ""
+        self.activity.startAnimating()
         self.queryStepsSum()
     }
     
     @IBAction func milesButton() {
-        self.stepsLabel.text = "Loading"
+        self.stepsLabel.text = ""
         self.queryDistanceSum()
     }
     
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
-    @IBAction func indexChanged(sender: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex
-        {
-        case 0:
-            self.stepsLabel.text = "Loading"
+    @IBAction func segmentValueChange (sender: AnyObject) {
+        if SegmentedControl.selectedSegmentIndex == 0 {
+            self.stepsLabel.text = "loading"
             self.queryStepsSum()
-        case 1:
-            self.stepsLabel.text = "Loading"
+        }
+        
+        if SegmentedControl.selectedSegmentIndex == 1 {
+            self.stepsLabel.text = "loading"
             self.queryDistanceSum()
-        default:
-            break;
         }
     }
+    
+    
+
     
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
         label.text = "x: \(x)     y: \(yValues)"
     }
     
     func queryStepsSum() {
+        activity.startAnimating()
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
@@ -121,6 +126,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
             if let sumQuantity = result?.sumQuantity() {
                 var numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
                 self.stepsLabel.text = "\(numberOfSteps)"
+                self.activity.stopAnimating()
             }
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)

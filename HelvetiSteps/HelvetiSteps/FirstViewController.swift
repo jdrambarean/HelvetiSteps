@@ -76,10 +76,12 @@ class FirstViewController: UIViewController, LineChartDelegate {
     let stepsUnit = HKUnit.countUnit()
     
     func requestHealthKitAuthorization() {
+        self.activity.startAnimating()
         let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount)
         healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead, completion: { [unowned self] (success, error) in
             if success {
                 self.queryStepsSum()
+                self.activity.stopAnimating()
             } else {
                 println(error.description)
             }
@@ -88,7 +90,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     @IBAction func stepsButton() {
         self.stepsLabel.text = ""
-        self.activity.startAnimating()
         self.queryStepsSum()
     }
     
@@ -99,12 +100,12 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     @IBAction func segmentValueChange (sender: AnyObject) {
         if SegmentedControl.selectedSegmentIndex == 0 {
-            self.stepsLabel.text = "loading"
+            self.stepsLabel.text = ""
             self.queryStepsSum()
         }
         
         if SegmentedControl.selectedSegmentIndex == 1 {
-            self.stepsLabel.text = "loading"
+            self.stepsLabel.text = ""
             self.queryDistanceSum()
         }
     }
@@ -133,6 +134,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     func queryDistanceSum() {
+        self.activity.startAnimating()
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
@@ -141,6 +143,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
             if let sumQuantity = result?.sumQuantity() {
                 var totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
                 self.stepsLabel.text = "\(totalDistance)"
+                self.activity.stopAnimating()
             }
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)

@@ -8,6 +8,7 @@
         <!--HelvetiSteps-->
         <scene sceneID="4Nl-hA-a4F">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gm7-j0-Zh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="HelvetiSteps" id="OhD-1v-vAT" customClass="FirstViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6O9-tX-fYg"/>
@@ -29,9 +30,6 @@
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rai-8W-S7q">
                                 <rect key="frame" x="101" y="57" width="213" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="sOG-3m-Rxp"/>
-                                </constraints>
                                 <segments>
                                     <segment title="Steps"/>
                                     <segment title="Miles"/>
@@ -41,28 +39,30 @@
                                     <action selector="segmentValueChange:" destination="OhD-1v-vAT" eventType="valueChanged" id="rB5-Kq-mWx"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTk-sH-0Ub">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTk-sH-0Ub">
                                 <rect key="frame" x="50" y="104" width="315" height="121"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-6s-N9F">
-                                <rect key="frame" x="197" y="321" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-6s-N9F">
+                                <rect key="frame" x="197" y="155" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="85" id="AK0-Nu-YNc"/>
-                            <constraint firstItem="Lha-T5-ECC" firstAttribute="top" secondItem="jTk-sH-0Ub" secondAttribute="bottom" constant="511" id="FSY-Qu-0y9"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="top" secondItem="rai-8W-S7q" secondAttribute="bottom" constant="19" id="JZi-Jn-1d0"/>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="37" id="a9b-Ot-4yQ"/>
-                            <constraint firstItem="nBz-hY-4n1" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leading" constant="538" id="hS9-Ik-S37"/>
-                            <constraint firstItem="nBz-hY-4n1" firstAttribute="top" secondItem="8Oc-6q-RhZ" secondAttribute="top" constant="20" symbolic="YES" id="keg-Lm-kCk"/>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="centerX" secondItem="8Oc-6q-RhZ" secondAttribute="centerX" id="rlC-zJ-0hG"/>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="centerX" secondItem="jTk-sH-0Ub" secondAttribute="centerX" id="uK7-Fd-RfL"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="34" id="yMm-wO-95p"/>
+                            <constraint firstItem="nBz-hY-4n1" firstAttribute="top" secondItem="8Oc-6q-RhZ" secondAttribute="top" constant="20" symbolic="YES" id="5bE-h7-7z7"/>
+                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerX" secondItem="rai-8W-S7q" secondAttribute="centerX" id="7H2-FE-y7A"/>
+                            <constraint firstItem="fz1-6s-N9F" firstAttribute="top" secondItem="rai-8W-S7q" secondAttribute="bottom" constant="70" id="G8e-Jy-Czr"/>
+                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerX" secondItem="jTk-sH-0Ub" secondAttribute="centerX" id="SId-00-fgq"/>
+                            <constraint firstItem="Lha-T5-ECC" firstAttribute="top" secondItem="jTk-sH-0Ub" secondAttribute="bottom" constant="511" id="Vra-nB-Ekv"/>
+                            <constraint firstItem="Lha-T5-ECC" firstAttribute="top" secondItem="fz1-6s-N9F" secondAttribute="bottom" constant="561" id="dTf-W6-bJZ"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="top" secondItem="rai-8W-S7q" secondAttribute="bottom" constant="19" id="jZd-DJ-E8Q"/>
+                            <constraint firstItem="rai-8W-S7q" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="85" id="k9m-yO-gnb"/>
+                            <constraint firstItem="nBz-hY-4n1" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leading" constant="538" id="kMH-2R-zF1"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="centerX" secondItem="8Oc-6q-RhZ" secondAttribute="centerX" id="m8V-ep-ZXt"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="34" id="uzB-Gq-KhW"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
@@ -70,10 +70,10 @@
                     <connections>
                         <outlet property="SegmentedControl" destination="rai-8W-S7q" id="XY0-nx-lf3"/>
                         <outlet property="activity" destination="fz1-6s-N9F" id="Nrk-TM-Kxu"/>
-                        <outlet property="stepsLabel" destination="jTk-sH-0Ub" id="cQC-S1-9sk"/>
+                        <outlet property="progressIndicator" destination="8Oc-6q-RhZ" id="PKF-Lp-vgM"/>
+                        <outlet property="valueLabel" destination="jTk-sH-0Ub" id="c7O-dm-Ftr"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gm7-j0-Zh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="112" y="562"/>
         </scene>

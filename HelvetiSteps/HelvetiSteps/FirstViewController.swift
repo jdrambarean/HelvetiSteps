@@ -18,7 +18,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
-        //activityIndicator.startAnimating()
         
         var views: Dictionary<String, AnyObject> = [:]
         
@@ -58,7 +57,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
 
     
-    @IBOutlet var stepsLabel: UILabel!
+    @IBOutlet var valueLabel: UILabel!
     
     
     
@@ -76,36 +75,25 @@ class FirstViewController: UIViewController, LineChartDelegate {
     let stepsUnit = HKUnit.countUnit()
     
     func requestHealthKitAuthorization() {
-        self.activity.startAnimating()
         let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount)
         healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead, completion: { [unowned self] (success, error) in
             if success {
                 self.queryStepsSum()
-                self.activity.stopAnimating()
             } else {
                 println(error.description)
             }
         })
     }
     
-    @IBAction func stepsButton() {
-        self.stepsLabel.text = ""
-        self.queryStepsSum()
-    }
-    
-    @IBAction func milesButton() {
-        self.stepsLabel.text = ""
-        self.queryDistanceSum()
-    }
     
     @IBAction func segmentValueChange (sender: AnyObject) {
         if SegmentedControl.selectedSegmentIndex == 0 {
-            self.stepsLabel.text = ""
+            self.valueLabel.text = ""
             self.queryStepsSum()
         }
         
         if SegmentedControl.selectedSegmentIndex == 1 {
-            self.stepsLabel.text = ""
+            self.valueLabel.text = ""
             self.queryDistanceSum()
         }
     }
@@ -126,7 +114,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
                 var numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
-                self.stepsLabel.text = "\(numberOfSteps)"
+                self.valueLabel.text = "\(numberOfSteps)"
                 self.activity.stopAnimating()
             }
         }
@@ -142,7 +130,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.distanceCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
                 var totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
-                self.stepsLabel.text = "\(totalDistance)"
+                self.valueLabel.text = "\(totalDistance)"
                 self.activity.stopAnimating()
             }
         }

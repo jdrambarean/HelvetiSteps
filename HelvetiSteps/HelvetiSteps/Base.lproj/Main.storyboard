@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D113c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OhD-1v-vAT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D130a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OhD-1v-vAT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,28 +8,24 @@
         <!--HelvetiSteps-->
         <scene sceneID="4Nl-hA-a4F">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gm7-j0-Zh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="HelvetiSteps" id="OhD-1v-vAT" customClass="FirstViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6O9-tX-fYg"/>
                         <viewControllerLayoutGuide type="bottom" id="Lha-T5-ECC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Oc-6q-RhZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBz-hY-4n1">
-                                <rect key="frame" x="538" y="20" width="46" height="30"/>
+                                <rect key="frame" x="538" y="65" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="0.40000000596046448" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="rS9-KD-Y97" kind="presentation" id="Ltn-il-mcu"/>
-                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rai-8W-S7q">
-                                <rect key="frame" x="101" y="57" width="213" height="29"/>
+                                <rect key="frame" x="101" y="33" width="174" height="29"/>
                                 <segments>
                                     <segment title="Steps"/>
                                     <segment title="Miles"/>
@@ -40,66 +36,42 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTk-sH-0Ub">
-                                <rect key="frame" x="50" y="104" width="315" height="121"/>
+                                <rect key="frame" x="50" y="80" width="276" height="121"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-6s-N9F">
-                                <rect key="frame" x="197" y="155" width="20" height="20"/>
+                                <rect key="frame" x="322" y="36" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="nBz-hY-4n1" firstAttribute="top" secondItem="8Oc-6q-RhZ" secondAttribute="top" constant="20" symbolic="YES" id="5bE-h7-7z7"/>
-                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerX" secondItem="rai-8W-S7q" secondAttribute="centerX" id="7H2-FE-y7A"/>
-                            <constraint firstItem="fz1-6s-N9F" firstAttribute="top" secondItem="rai-8W-S7q" secondAttribute="bottom" constant="70" id="G8e-Jy-Czr"/>
-                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerX" secondItem="jTk-sH-0Ub" secondAttribute="centerX" id="SId-00-fgq"/>
-                            <constraint firstItem="Lha-T5-ECC" firstAttribute="top" secondItem="jTk-sH-0Ub" secondAttribute="bottom" constant="511" id="Vra-nB-Ekv"/>
-                            <constraint firstItem="Lha-T5-ECC" firstAttribute="top" secondItem="fz1-6s-N9F" secondAttribute="bottom" constant="561" id="dTf-W6-bJZ"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="top" secondItem="rai-8W-S7q" secondAttribute="bottom" constant="19" id="jZd-DJ-E8Q"/>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="85" id="k9m-yO-gnb"/>
-                            <constraint firstItem="nBz-hY-4n1" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leading" constant="538" id="kMH-2R-zF1"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="centerX" secondItem="8Oc-6q-RhZ" secondAttribute="centerX" id="m8V-ep-ZXt"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="34" id="uzB-Gq-KhW"/>
+                            <constraint firstItem="rai-8W-S7q" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="85" id="4d3-iE-70F"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="34" id="6D5-vq-Dhm"/>
+                            <constraint firstItem="fz1-6s-N9F" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="16" id="BMk-qd-OdX"/>
+                            <constraint firstItem="nBz-hY-4n1" firstAttribute="top" secondItem="8Oc-6q-RhZ" secondAttribute="topMargin" constant="65" id="ITN-V7-lJ3"/>
+                            <constraint firstItem="rai-8W-S7q" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="13" id="Ly6-KP-ktf"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="top" secondItem="fz1-6s-N9F" secondAttribute="bottom" constant="24" id="ZYa-u5-KCp"/>
+                            <constraint firstItem="rai-8W-S7q" firstAttribute="centerX" secondItem="jTk-sH-0Ub" secondAttribute="centerX" id="Zdw-DO-T5T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fz1-6s-N9F" secondAttribute="trailing" constant="17" id="blt-KP-SEk"/>
+                            <constraint firstItem="Lha-T5-ECC" firstAttribute="top" secondItem="jTk-sH-0Ub" secondAttribute="bottom" constant="466" id="pAk-rC-xF4"/>
+                            <constraint firstItem="fz1-6s-N9F" firstAttribute="leading" secondItem="rai-8W-S7q" secondAttribute="trailing" constant="47" id="smC-xp-IZs"/>
+                            <constraint firstItem="nBz-hY-4n1" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leading" constant="538" id="uB9-KU-dMy"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="SegmentedControl" destination="rai-8W-S7q" id="XY0-nx-lf3"/>
-                        <outlet property="activity" destination="fz1-6s-N9F" id="Nrk-TM-Kxu"/>
-                        <outlet property="progressIndicator" destination="8Oc-6q-RhZ" id="PKF-Lp-vgM"/>
+                        <outlet property="SegmentedControl" destination="rai-8W-S7q" id="qZf-Ld-ikG"/>
+                        <outlet property="activity" destination="fz1-6s-N9F" id="hYU-9a-ML6"/>
                         <outlet property="valueLabel" destination="jTk-sH-0Ub" id="c7O-dm-Ftr"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gm7-j0-Zh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="112" y="562"/>
-        </scene>
-        <!--Steps View Controller-->
-        <scene sceneID="sZr-ly-rtH">
-            <objects>
-                <viewController id="rS9-KD-Y97" customClass="StepsViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gGY-ID-rU6"/>
-                        <viewControllerLayoutGuide type="bottom" id="hym-7u-kRY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6DF-SR-5wz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lv7-23-GcH">
-                                <rect key="frame" x="0.0" y="20" width="468" height="356"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cuu-1d-p2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="228" y="1453"/>
         </scene>
     </scenes>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

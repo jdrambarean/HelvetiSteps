@@ -105,6 +105,20 @@ class FirstViewController: UIViewController, LineChartDelegate {
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }
     
+    func observerQuerySteps() {
+        self.activity.startAnimating()
+        let startDate = NSDate().dateByRemovingTime()
+        let endDate = NSDate()
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
+        let observerQuery = HKObserverQuery(sampleType: steps, predicate: nil) {
+            observerQuery, completionHandler, error in
+            if let newQuantity = result?.newQuantity() {
+                var totalSteps = Int(newQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
+            }
+            }
+    }
+    
+    
     func queryDistanceSum() {
         self.activity.startAnimating()
         let sumOption = HKStatisticsOptions.CumulativeSum
@@ -122,7 +136,9 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     func querySteps() {
-        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount, predicate: nil, limit: 100, sortDescriptors: nil)
+        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount, predicate: nil,
+            limit: 100,
+            sortDescriptors: nil)
             { [unowned self] (query,results, error) in
                 if let results = results as? [HKQuantitySample] {
                     self.stepsForChart = results

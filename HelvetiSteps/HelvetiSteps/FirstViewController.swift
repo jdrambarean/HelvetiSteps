@@ -17,11 +17,13 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawChart()
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidLoad()
         requestHealthKitAuthorization()
+        querySteps()
+        drawChart()
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +54,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     func requestHealthKitAuthorization() {
         let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount, healthKitManager.distanceCount)
-        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead, completion: { [unowned self] (success, error) in
+        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as Set<NSObject>, completion: { [unowned self] (success, error) in
             if success {
                 self.queryStepsSum()
                 //self.querySteps()
@@ -124,7 +126,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
             { [unowned self] (query,results, error) in
                 if let results = results as? [HKQuantitySample] {
                     self.stepsForChart = results
-                    //self.drawChart()
                 }
         }
         healthKitManager.healthStore?.executeQuery(sampleQuery)

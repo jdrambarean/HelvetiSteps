@@ -42,7 +42,7 @@ class StepsViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(stepCellIdentifier) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(stepCellIdentifier) as! UITableViewCell
         
         let step = steps[indexPath.row]
         let numberOfSteps = Int(step.quantity.doubleValueForUnit(healthKitManager.stepsUnit))
@@ -58,7 +58,7 @@ private extension StepsViewController {
     
     func requestHealthKitAuthorization() {
         let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount)
-        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead, completion: { [unowned self] (success, error) in
+        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as Set<NSObject>, completion: { [unowned self] (success, error) in
             if success {
                 self.queryStepsSum()
                 self.querySteps()
@@ -72,7 +72,7 @@ private extension StepsViewController {
         let sumOption = HKStatisticsOptions.CumulativeSum
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount, quantitySamplePredicate: nil, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                let headerView = self.tableView.dequeueReusableCellWithIdentifier(self.totalStepsCellIdentifier) as UITableViewCell
+                let headerView = self.tableView.dequeueReusableCellWithIdentifier(self.totalStepsCellIdentifier) as! UITableViewCell
                 
                 let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
                 //headerView.textLabel.text = "\(numberOfSteps) total"

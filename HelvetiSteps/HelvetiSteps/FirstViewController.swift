@@ -104,14 +104,20 @@ class FirstViewController: UIViewController, LineChartDelegate {
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }
-    
+
     func observerQuerySteps() {
         self.activity.startAnimating()
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
-        let observerQuery = HKObserverQuery(sampleType: steps, predicate: nil) {
-            observerQuery, completionHandler, error in
+        let query = HKObserverQuery(sampleType: steps, predicate: nil) {
+            query, completionHandler, error in
+            if error != nil {
+                
+                // Perform Proper Error Handling Here...
+                println("An error occured")
+                abort()
+            }
             if let newQuantity = result?.newQuantity() {
                 var totalSteps = Int(newQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
             }

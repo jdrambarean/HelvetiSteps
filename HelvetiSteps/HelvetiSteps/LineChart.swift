@@ -10,7 +10,7 @@ import QuartzCore
 func - (left: Array<CGFloat>, right: Array<CGFloat>) -> Array<CGFloat> {
     var result: Array<CGFloat> = []
     for index in 0..<left.count {
-        var difference = left[index] - right[index]
+        let difference = left[index] - right[index]
         result.append(difference)
     }
     return result
@@ -104,7 +104,7 @@ class LineChart: UIControl {
         self.init(frame: CGRectZero)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -112,7 +112,7 @@ class LineChart: UIControl {
     override func drawRect(rect: CGRect) {
         
         if removeAll {
-            var context = UIGraphicsGetCurrentContext()
+            let context = UIGraphicsGetCurrentContext()
             CGContextClearRect(context, rect)
             return
         }
@@ -155,9 +155,9 @@ class LineChart: UIControl {
         }
         
         // draw lines
-        for (lineIndex, lineData) in enumerate(dataStore) {
-            var scaledDataXAxis = scaleDataXAxis(lineData)
-            var scaledDataYAxis = scaleDataYAxis(lineData)
+        for (lineIndex, lineData) in dataStore.enumerate() {
+            let scaledDataXAxis = scaleDataXAxis(lineData)
+            let scaledDataYAxis = scaleDataYAxis(lineData)
             drawLine(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex)
             
             // draw dots
@@ -176,9 +176,9 @@ class LineChart: UIControl {
     * Convert hex color to UIColor
     */
     func UIColorFromHex(hex: Int) -> UIColor {
-        var red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        var green = CGFloat((hex & 0xFF00) >> 8) / 255.0
-        var blue = CGFloat((hex & 0xFF)) / 255.0
+        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((hex & 0xFF00) >> 8) / 255.0
+        let blue = CGFloat((hex & 0xFF)) / 255.0
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
@@ -222,10 +222,10 @@ class LineChart: UIControl {
     */
     func handleTouchEvents(touches: NSSet!, event: UIEvent!) {
         if (self.dataStore.isEmpty) { return }
-        var point: AnyObject! = touches.anyObject()
-        var xValue = point.locationInView(self).x
-        var closestXValueIndex = findClosestXValueInData(xValue)
-        var yValues: Array<CGFloat> = getYValuesForXValue(closestXValueIndex)
+        let point: AnyObject! = touches.anyObject()
+        let xValue = point.locationInView(self).x
+        let closestXValueIndex = findClosestXValueInData(xValue)
+        let yValues: Array<CGFloat> = getYValuesForXValue(closestXValueIndex)
         highlightDataPoints(closestXValueIndex)
         delegate?.didSelectDataPoint(CGFloat(closestXValueIndex), yValues: yValues)
     }
@@ -255,9 +255,9 @@ class LineChart: UIControl {
     */
     func findClosestXValueInData(xValue: CGFloat) -> Int {
         var scaledDataXAxis = scaleDataXAxis(dataStore[0])
-        var difference = scaledDataXAxis[1] - scaledDataXAxis[0]
-        var dividend = (xValue - axisInset) / difference
-        var roundedDividend = Int(round(Double(dividend)))
+        let difference = scaledDataXAxis[1] - scaledDataXAxis[0]
+        let dividend = (xValue - axisInset) / difference
+        let roundedDividend = Int(round(Double(dividend)))
         return roundedDividend
     }
     
@@ -267,7 +267,7 @@ class LineChart: UIControl {
     * Highlight data points at index.
     */
     func highlightDataPoints(index: Int) {
-        for (lineIndex, dotsData) in enumerate(dotsDataStore) {
+        for (lineIndex, dotsData) in dotsDataStore.enumerate() {
             // make all dots white again
             for dot in dotsData {
                 dot.backgroundColor = dotsBackgroundColor.CGColor
@@ -293,11 +293,11 @@ class LineChart: UIControl {
     func drawDataDots(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
         var dots: Array<DotCALayer> = []
         for index in 0..<xAxis.count {
-            var xValue = xAxis[index] + axisInset - outerRadius/2
-            var yValue = self.bounds.height - yAxis[index] - axisInset - outerRadius/2
+            let xValue = xAxis[index] + axisInset - outerRadius/2
+            let yValue = self.bounds.height - yAxis[index] - axisInset - outerRadius/2
             
             // draw custom layer with another layer in the center
-            var dotLayer = DotCALayer()
+            let dotLayer = DotCALayer()
             dotLayer.dotInnerColor = colors[lineIndex]
             dotLayer.innerRadius = innerRadius
             dotLayer.backgroundColor = dotsBackgroundColor.CGColor
@@ -308,7 +308,7 @@ class LineChart: UIControl {
             
             // animate opacity
             if animationEnabled {
-                var animation = CABasicAnimation(keyPath: "opacity")
+                let animation = CABasicAnimation(keyPath: "opacity")
                 animation.duration = animationDuration
                 animation.fromValue = 0
                 animation.toValue = 1
@@ -325,9 +325,9 @@ class LineChart: UIControl {
     * Draw x and y axis.
     */
     func drawAxes() {
-        var height = self.bounds.height
-        var width = self.bounds.width
-        var context = UIGraphicsGetCurrentContext()
+        let height = self.bounds.height
+        let width = self.bounds.width
+        let context = UIGraphicsGetCurrentContext()
         CGContextSetStrokeColorWithColor(context, axesColor.CGColor)
         // draw x-axis
         CGContextMoveToPoint(context, axisInset, height-axisInset)
@@ -347,7 +347,7 @@ class LineChart: UIControl {
     func getMaximumValue() -> CGFloat {
         var maximum = 1
         for data in dataStore {
-            var newMaximum = data.reduce(Int.min, combine: { max(Int($0), Int($1)) })
+            let newMaximum = data.reduce(Int.min, combine: { max(Int($0), Int($1)) })
             if newMaximum > maximum {
                 maximum = newMaximum
             }
@@ -361,10 +361,10 @@ class LineChart: UIControl {
     * Scale to fit drawing width.
     */
     func scaleDataXAxis(data: Array<CGFloat>) -> Array<CGFloat> {
-        var factor = drawingWidth / CGFloat(data.count - 1)
+        let factor = drawingWidth / CGFloat(data.count - 1)
         var scaledDataXAxis: Array<CGFloat> = []
         for index in 0..<data.count {
-            var newXValue = factor * CGFloat(index)
+            let newXValue = factor * CGFloat(index)
             scaledDataXAxis.append(newXValue)
         }
         return scaledDataXAxis
@@ -376,10 +376,10 @@ class LineChart: UIControl {
     * Scale data to fit drawing height.
     */
     func scaleDataYAxis(data: Array<CGFloat>) -> Array<CGFloat> {
-        var maximumYValue = getMaximumValue()
-        var factor = drawingHeight / maximumYValue
-        var scaledDataYAxis = data.map({datum -> CGFloat in
-            var newYValue = datum * factor
+        let maximumYValue = getMaximumValue()
+        let factor = drawingHeight / maximumYValue
+        let scaledDataYAxis = data.map({datum -> CGFloat in
+            let newYValue = datum * factor
             return newYValue
             })
         return scaledDataYAxis
@@ -391,15 +391,15 @@ class LineChart: UIControl {
     * Draw line.
     */
     func drawLine(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
-        var path = CGPathCreateMutable()
+        let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, axisInset, self.bounds.height - yAxis[0] - axisInset)
         for index in 1..<xAxis.count {
-            var xValue = xAxis[index] + axisInset
-            var yValue = self.bounds.height - yAxis[index] - axisInset
+            let xValue = xAxis[index] + axisInset
+            let yValue = self.bounds.height - yAxis[index] - axisInset
             CGPathAddLineToPoint(path, nil, xValue, yValue)
         }
         
-        var layer = CAShapeLayer()
+        let layer = CAShapeLayer()
         layer.frame = self.bounds
         layer.path = path
         layer.strokeColor = colors[lineIndex].CGColor
@@ -409,7 +409,7 @@ class LineChart: UIControl {
         
         // animate line drawing
         if animationEnabled {
-            var animation = CABasicAnimation(keyPath: "strokeEnd")
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.duration = animationDuration
             animation.fromValue = 0
             animation.toValue = 1
@@ -425,7 +425,7 @@ class LineChart: UIControl {
      * Fill area between line chart and x-axis.
      */
     func drawAreaBeneathLineChart(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
-        var context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()
         CGContextSetFillColorWithColor(context, colors[lineIndex].colorWithAlphaComponent(0.2).CGColor)
         // move to origin
         CGContextMoveToPoint(context, axisInset, self.bounds.height - axisInset)
@@ -433,8 +433,8 @@ class LineChart: UIControl {
         CGContextAddLineToPoint(context, axisInset, self.bounds.height - yAxis[0] - axisInset)
         // draw whole line chart
         for index in 1..<xAxis.count {
-            var xValue = xAxis[index] + axisInset
-            var yValue = self.bounds.height - yAxis[index] - axisInset
+            let xValue = xAxis[index] + axisInset
+            let yValue = self.bounds.height - yAxis[index] - axisInset
             CGContextAddLineToPoint(context, xValue, yValue)
         }
         // move down to x axis
@@ -458,7 +458,7 @@ class LineChart: UIControl {
         
         for index in 0..<xAxis.count-1 {
             
-            var context = UIGraphicsGetCurrentContext()
+            let context = UIGraphicsGetCurrentContext()
             
             if difference[index] < 0 {
                 CGContextSetFillColorWithColor(context, negativeAreaColor.CGColor)
@@ -466,14 +466,14 @@ class LineChart: UIControl {
                 CGContextSetFillColorWithColor(context, positiveAreaColor.CGColor)
             }
             
-            var point1XValue = xAxis[index] + axisInset
-            var point1YValue = self.bounds.height - yAxisDataA[index] - axisInset
-            var point2XValue = xAxis[index] + axisInset
-            var point2YValue = self.bounds.height - yAxisDataB[index] - axisInset
-            var point3XValue = xAxis[index+1] + axisInset
-            var point3YValue = self.bounds.height - yAxisDataB[index+1] - axisInset
-            var point4XValue = xAxis[index+1] + axisInset
-            var point4YValue = self.bounds.height - yAxisDataA[index+1] - axisInset
+            let point1XValue = xAxis[index] + axisInset
+            let point1YValue = self.bounds.height - yAxisDataA[index] - axisInset
+            let point2XValue = xAxis[index] + axisInset
+            let point2YValue = self.bounds.height - yAxisDataB[index] - axisInset
+            let point3XValue = xAxis[index+1] + axisInset
+            let point3YValue = self.bounds.height - yAxisDataB[index+1] - axisInset
+            let point4XValue = xAxis[index+1] + axisInset
+            let point4YValue = self.bounds.height - yAxisDataA[index+1] - axisInset
             
             CGContextMoveToPoint(context, point1XValue, point1YValue)
             CGContextAddLineToPoint(context, point2XValue, point2YValue)
@@ -492,8 +492,8 @@ class LineChart: UIControl {
     * Draw x grid.
     */
     func drawXGrid() {
-        var space = drawingWidth / numberOfGridLinesX
-        var context = UIGraphicsGetCurrentContext()
+        let space = drawingWidth / numberOfGridLinesX
+        let context = UIGraphicsGetCurrentContext()
         CGContextSetStrokeColorWithColor(context, gridColor.CGColor)
         for index in 1...Int(numberOfGridLinesX) {
             CGContextMoveToPoint(context, axisInset + (CGFloat(index) * space), self.bounds.height - axisInset)
@@ -508,11 +508,11 @@ class LineChart: UIControl {
     * Draw y grid.
     */
     func drawYGrid() {
-        var maximumYValue = getMaximumValue()
+        let maximumYValue = getMaximumValue()
         var step = Int(maximumYValue) / Int(numberOfGridLinesY)
         step = step == 0 ? 1 : step
-        var height = drawingHeight / maximumYValue
-        var context = UIGraphicsGetCurrentContext()
+        let height = drawingHeight / maximumYValue
+        let context = UIGraphicsGetCurrentContext()
         for var index = 0; index <= Int(maximumYValue); index += step {
             CGContextMoveToPoint(context, axisInset, self.bounds.height - (CGFloat(index) * height) - axisInset)
             CGContextAddLineToPoint(context, self.bounds.width - axisInset, self.bounds.height - (CGFloat(index) * height) - axisInset)
@@ -536,10 +536,10 @@ class LineChart: UIControl {
     * Draw x labels.
     */
     func drawXLabels() {
-        var xAxisData = self.dataStore[0]
-        var scaledDataXAxis = scaleDataXAxis(xAxisData)
-        for (index, scaledValue) in enumerate(scaledDataXAxis) {
-            var label = UILabel(frame: CGRect(x: scaledValue + (axisInset/2), y: self.bounds.height-axisInset, width: axisInset, height: axisInset))
+        let xAxisData = self.dataStore[0]
+        let scaledDataXAxis = scaleDataXAxis(xAxisData)
+        for (index, scaledValue) in scaledDataXAxis.enumerate() {
+            let label = UILabel(frame: CGRect(x: scaledValue + (axisInset/2), y: self.bounds.height-axisInset, width: axisInset, height: axisInset))
             label.font = UIFont.systemFontOfSize(10)
             label.textAlignment = NSTextAlignment.Center
             label.text = String(index)
@@ -553,13 +553,13 @@ class LineChart: UIControl {
     * Draw y labels.
     */
     func drawYLabels() {
-        var maximumYValue = getMaximumValue()
+        let maximumYValue = getMaximumValue()
         var step = Int(maximumYValue) / Int(numberOfGridLinesY)
         step = step == 0 ? 1 : step
-        var height = drawingHeight / maximumYValue
+        let height = drawingHeight / maximumYValue
         for var index = 0; index <= Int(maximumYValue); index += step {
-            var yValue = self.bounds.height - (CGFloat(index) * height) - (axisInset * 1.5)
-            var label = UILabel(frame: CGRect(x: 0, y: yValue, width: axisInset, height: axisInset))
+            let yValue = self.bounds.height - (CGFloat(index) * height) - (axisInset * 1.5)
+            let label = UILabel(frame: CGRect(x: 0, y: yValue, width: axisInset, height: axisInset))
             label.font = UIFont.systemFontOfSize(10)
             label.textAlignment = NSTextAlignment.Center
             label.text = String(index)

@@ -17,13 +17,13 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        drawChart()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         requestHealthKitAuthorization()
         querySteps()
-        drawChart()
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,13 +53,13 @@ class FirstViewController: UIViewController, LineChartDelegate {
     let stepsUnit = HKUnit.countUnit()
     
     func requestHealthKitAuthorization() {
-        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount, healthKitManager.distanceCount)
-        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as Set<NSObject>, completion: { [unowned self] (success, error) in
+        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount!, healthKitManager.distanceCount!)
+        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as NSSet as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
             if success {
                 self.queryStepsSum()
                 //self.querySteps()
             } else {
-                println(error.description)
+                print(error!.description)
             }
         })
     }
@@ -69,11 +69,13 @@ class FirstViewController: UIViewController, LineChartDelegate {
         if SegmentedControl.selectedSegmentIndex == 0 {
             self.valueLabel.text = ""
             self.queryStepsSum()
+            drawChart()
         }
         
         if SegmentedControl.selectedSegmentIndex == 1 {
             self.valueLabel.text = ""
             self.queryDistanceSum()
+            drawChart()
         }
     }
     
@@ -85,7 +87,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     func valueConversion() {
-        var floatArray = self.stepsForChart.map({CGFloat($0.quantity.doubleValueForUnit(self.healthKitManager.stepsUnit))})
+        let floatArray = self.stepsForChart.map({CGFloat($0.quantity.doubleValueForUnit(self.healthKitManager.stepsUnit))})
         self.stepsInFloat = floatArray
     }
     
@@ -94,10 +96,10 @@ class FirstViewController: UIViewController, LineChartDelegate {
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
-        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
-        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
+        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                var numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
+                let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
                 self.valueLabel.text = "\(numberOfSteps)"
                 self.activity.stopAnimating()
             }
@@ -132,8 +134,8 @@ class FirstViewController: UIViewController, LineChartDelegate {
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
-        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
-        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.distanceCount, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
+        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.distanceCount!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
                 var totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
                 self.valueLabel.text = "\(totalDistance)"
@@ -144,7 +146,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     func querySteps() {
-        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount, predicate: nil,
+        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount!, predicate: nil,
             limit: 100,
             sortDescriptors: nil)
             { [unowned self] (query,results, error) in
@@ -159,32 +161,32 @@ class FirstViewController: UIViewController, LineChartDelegate {
         var views: Dictionary<String, AnyObject> = [:]
         
         self.label.text = "..."
-        self.label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.label.translatesAutoresizingMaskIntoConstraints = false
         self.label.textAlignment = NSTextAlignment.Center
         self.view.addSubview(self.label)
         views["label"] = self.label
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: nil, metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-350-[label]", options: nil, metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-350-[label]", options: [], metrics: nil, views: views))
         
-        var data: Array<CGFloat> = [1, 2, 3, 12, 23, 44, 2, 19, 102, 23]
+        let data: Array<CGFloat> = [1, 2, 3, 12, 23, 44, 2, 19, 102, 23]
         //var data2: Array<CGFloat> = [1, 3, 5, 13, 17, 20]
         
         self.lineChart = LineChart()
         self.lineChart!.areaUnderLinesVisible = true
         self.lineChart!.addLine(data)
         //lineChart!.addLine(data2)
-        self.lineChart!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.lineChart!.translatesAutoresizingMaskIntoConstraints = false
         self.lineChart!.delegate = self
         self.view.addSubview(self.lineChart!)
         views["chart"] = self.lineChart
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: nil, metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: nil, metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==200)]", options: [], metrics: nil, views: views))
         
-        var delta: Int64 = 4 * Int64(NSEC_PER_SEC)
-        var time = dispatch_time(DISPATCH_TIME_NOW, delta)
+        let delta: Int64 = 4 * Int64(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, delta)
         
         dispatch_after(time, dispatch_get_main_queue(), {
-            self.lineChart!.clear()
+            //self.lineChart!.clear()
             //self.lineChart!.addLine(data2)
         });
     }
@@ -196,7 +198,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
 
 extension NSDate {
     func dateByRemovingTime() -> NSDate {
-        let flags: NSCalendarUnit = .DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit
+        let flags: NSCalendarUnit = [.NSDayCalendarUnit, .NSMonthCalendarUnit, .NSYearCalendarUnit]
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components(flags, fromDate: self)
         return calendar.dateFromComponents(components)!

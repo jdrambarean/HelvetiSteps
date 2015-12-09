@@ -22,7 +22,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         requestHealthKitAuthorization()
-        querySteps()
+        getDataArray()
     }
     
     override func didReceiveMemoryWarning() {
@@ -168,7 +168,8 @@ class FirstViewController: UIViewController, LineChartDelegate {
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {
-                    self.chartData = results
+                    let dataArray = results.map {$0.quantity.doubleValueForUnit(self.stepsUnit)}
+                    self.chartData = dataArray
                     self.drawChart()
                 }
         }

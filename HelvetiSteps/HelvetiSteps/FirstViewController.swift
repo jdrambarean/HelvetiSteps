@@ -17,7 +17,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawChart()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -48,6 +47,8 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     var stepsToDisplay = 0
     
+    var chartData = []
+    
     let stepsCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
     
     let stepsUnit = HKUnit.countUnit()
@@ -69,13 +70,13 @@ class FirstViewController: UIViewController, LineChartDelegate {
         if SegmentedControl.selectedSegmentIndex == 0 {
             self.valueLabel.text = ""
             self.queryStepsSum()
-            drawChart()
+            self.getDataArray()
         }
         
         if SegmentedControl.selectedSegmentIndex == 1 {
             self.valueLabel.text = ""
             self.queryDistanceSum()
-            drawChart()
+            self.getDataArray()
         }
     }
     
@@ -137,7 +138,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.distanceCount!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                var totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
+                let totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
                 self.valueLabel.text = "\(totalDistance)"
                 self.activity.stopAnimating()
             }
@@ -157,6 +158,24 @@ class FirstViewController: UIViewController, LineChartDelegate {
         healthKitManager.healthStore?.executeQuery(sampleQuery)
 }
     
+    func getDataArray() {
+        let stepsCount = HKQuantityType.quantityTypeForIdentifier(
+            HKQuantityTypeIdentifierStepCount)
+        
+        let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount!,
+            predicate: nil,
+            limit: 100,
+            sortDescriptors: nil)
+            { [unowned self] (query, results, error) in
+                if let results = results as? [HKQuantitySample] {
+                    self.chartData = results
+                    self.drawChart()
+                }
+        }
+        
+        healthKitManager.healthStore?.executeQuery(stepsSampleQuery)
+    }
+    
     func drawChart() {
         var views: Dictionary<String, AnyObject> = [:]
         
@@ -168,7 +187,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-350-[label]", options: [], metrics: nil, views: views))
         
-        let data: Array<CGFloat> = [1, 2, 3, 12, 23, 44, 2, 19, 102, 23]
+        let data: Array<CGFloat> = chartData as! Array<CGFloat>
         //var data2: Array<CGFloat> = [1, 3, 5, 13, 17, 20]
         
         self.lineChart = LineChart()

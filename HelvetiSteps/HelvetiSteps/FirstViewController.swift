@@ -17,12 +17,12 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestHealthKitAuthorization()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         requestHealthKitAuthorization()
-        getDataArray()
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,38 +58,12 @@ class FirstViewController: UIViewController, LineChartDelegate {
         healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as NSSet as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
             if success {
                 self.queryStepsSum()
+                self.getDataArray()
                 //self.querySteps()
             } else {
                 print(error!.description)
             }
         })
-    }
-    
-    
-    @IBAction func segmentValueChange (sender: AnyObject) {
-        if SegmentedControl.selectedSegmentIndex == 0 {
-            self.valueLabel.text = ""
-            self.queryStepsSum()
-            self.getDataArray()
-        }
-        
-        if SegmentedControl.selectedSegmentIndex == 1 {
-            self.valueLabel.text = ""
-            self.queryDistanceSum()
-            self.getDataArray()
-        }
-    }
-    
-    
-
-    
-    func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
-        label.text = "x: \(x)     y: \(yValues)"
-    }
-    
-    func valueConversion() {
-        let floatArray = self.stepsForChart.map({CGFloat($0.quantity.doubleValueForUnit(self.healthKitManager.stepsUnit))})
-        self.stepsInFloat = floatArray
     }
     
     func queryStepsSum() {
@@ -107,27 +81,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }
-
     
-// This is a future feature that I might want to consider to improve the performance of the app
-//    func observerQuerySteps() {
-//        self.activity.startAnimating()
-//        let startDate = NSDate().dateByRemovingTime()
-//        let endDate = NSDate()
-//        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: nil)
-//        let query = HKObserverQuery(sampleType: steps, predicate: nil) {
-//            query, completionHandler, error in
-//            if error != nil {
-//                
-//                // Perform Proper Error Handling Here...
-//                println("An error occured")
-//                abort()
-//            }
-//            if let newQuantity = result?.newQuantity() {
-//                var totalSteps = Int(newQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
-//            }
-//            }
-//    }
     
     
     func queryDistanceSum() {
@@ -146,19 +100,8 @@ class FirstViewController: UIViewController, LineChartDelegate {
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }
     
-    func querySteps() {
-        let sampleQuery = HKSampleQuery(sampleType: healthKitManager.stepsCount!, predicate: nil,
-            limit: 100,
-            sortDescriptors: nil)
-            { [unowned self] (query,results, error) in
-                if let results = results as? [HKQuantitySample] {
-                    self.stepsForChart = results
-                }
-        }
-        healthKitManager.healthStore?.executeQuery(sampleQuery)
-}
-    
     func getDataArray() {
+        self.activity.startAnimating()
         let stepsCount = HKQuantityType.quantityTypeForIdentifier(
             HKQuantityTypeIdentifierStepCount)
         
@@ -171,10 +114,33 @@ class FirstViewController: UIViewController, LineChartDelegate {
                     let dataArray = results.map {$0.quantity.doubleValueForUnit(self.stepsUnit)}
                     self.chartData = dataArray
                     self.drawChart()
+                    self.activity.stopAnimating()
                 }
         }
         
         healthKitManager.healthStore?.executeQuery(stepsSampleQuery)
+    }
+    
+    
+//    @IBAction func segmentValueChange (sender: AnyObject) {
+//        if SegmentedControl.selectedSegmentIndex == 0 {
+//            self.valueLabel.text = ""
+//            self.queryStepsSum()
+//            self.getDataArray()
+//        }
+//        
+//        if SegmentedControl.selectedSegmentIndex == 1 {
+//            self.valueLabel.text = ""
+//            self.queryDistanceSum()
+//            self.getDataArray()
+//        }
+//    }
+    
+    
+
+    
+    func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
+        label.text = "x: \(x)     y: \(yValues)"
     }
     
     func drawChart() {

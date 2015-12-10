@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OhD-1v-vAT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OhD-1v-vAT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -18,66 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBz-hY-4n1">
-                                <rect key="frame" x="538" y="65" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.40000000596046448" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rai-8W-S7q">
-                                <rect key="frame" x="101" y="33" width="174" height="29"/>
-                                <animations/>
-                                <segments>
-                                    <segment title="Steps"/>
-                                    <segment title="Miles"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="segmentValueChange:" destination="OhD-1v-vAT" eventType="valueChanged" id="rB5-Kq-mWx"/>
-                                </connections>
-                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTk-sH-0Ub">
                                 <rect key="frame" x="50" y="80" width="276" height="121"/>
                                 <animations/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="5KN-WU-HiZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-6s-N9F">
-                                <rect key="frame" x="322" y="36" width="20" height="20"/>
+                                <rect key="frame" x="177" y="324" width="20" height="20"/>
                                 <animations/>
                             </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="85" id="4d3-iE-70F"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="34" id="6D5-vq-Dhm"/>
-                            <constraint firstItem="fz1-6s-N9F" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="16" id="BMk-qd-OdX"/>
-                            <constraint firstItem="nBz-hY-4n1" firstAttribute="top" secondItem="8Oc-6q-RhZ" secondAttribute="topMargin" constant="65" id="ITN-V7-lJ3"/>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="13" id="Ly6-KP-ktf"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="top" secondItem="fz1-6s-N9F" secondAttribute="bottom" constant="24" id="ZYa-u5-KCp"/>
-                            <constraint firstItem="rai-8W-S7q" firstAttribute="centerX" secondItem="jTk-sH-0Ub" secondAttribute="centerX" id="Zdw-DO-T5T"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fz1-6s-N9F" secondAttribute="trailing" constant="17" id="blt-KP-SEk"/>
-                            <constraint firstItem="Lha-T5-ECC" firstAttribute="top" secondItem="jTk-sH-0Ub" secondAttribute="bottom" constant="466" id="pAk-rC-xF4"/>
-                            <constraint firstItem="fz1-6s-N9F" firstAttribute="leading" secondItem="rai-8W-S7q" secondAttribute="trailing" constant="47" id="smC-xp-IZs"/>
-                            <constraint firstItem="nBz-hY-4n1" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leading" constant="538" id="uB9-KU-dMy"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="60" id="TUT-Vo-ixl"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="34" id="ch5-9w-ZW7"/>
+                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerX" secondItem="8Oc-6q-RhZ" secondAttribute="centerX" id="dQo-QV-DEq"/>
+                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerY" secondItem="8Oc-6q-RhZ" secondAttribute="centerY" id="gbp-9D-8v5"/>
+                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="centerX" secondItem="8Oc-6q-RhZ" secondAttribute="centerX" id="kUs-tg-ONc"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="SegmentedControl" destination="rai-8W-S7q" id="qZf-Ld-ikG"/>
                         <outlet property="activity" destination="fz1-6s-N9F" id="hYU-9a-ML6"/>
                         <outlet property="valueLabel" destination="jTk-sH-0Ub" id="c7O-dm-Ftr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gm7-j0-Zh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112" y="562"/>
+            <point key="canvasLocation" x="111.5" y="623.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="o3a-qw-P9a">

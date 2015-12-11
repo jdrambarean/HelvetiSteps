@@ -73,7 +73,7 @@ class LineChart: UIControl {
     var dataStore: Array<Array<CGFloat>> = []
     var dotsDataStore: Array<Array<DotCALayer>> = []
     var lineLayerStore: Array<CAShapeLayer> = []
-    var colors: Array<UIColor> = []
+    var colors: Array<UIColor> = [UIColor.grayColor()]
     
     var removeAll: Bool = false
     

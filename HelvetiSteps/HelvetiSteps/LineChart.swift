@@ -49,7 +49,7 @@ class LineChart: UIControl {
     var axesColor = UIColor(red: 96/255.0, green: 125/255.0, blue: 139/255.0, alpha: 1)
     
     // #f69988
-    var positiveAreaColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1)
+    var positiveAreaColor = UIColor.whiteColor()
     
     // #72d572
     var negativeAreaColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1)
@@ -85,7 +85,7 @@ class LineChart: UIControl {
         
         // category10 colors from d3 - https://github.com/mbostock/d3/wiki/Ordinal-Scales
         self.colors = [
-            UIColorFromHex(0x1f77b4),
+            UIColor.whiteColor(),
             UIColorFromHex(0xff7f0e),
             UIColorFromHex(0x2ca02c),
             UIColorFromHex(0xd62728),
@@ -301,7 +301,7 @@ class LineChart: UIControl {
             dotLayer.dotInnerColor = colors[lineIndex]
             dotLayer.innerRadius = innerRadius
             dotLayer.backgroundColor = dotsBackgroundColor.CGColor
-            dotLayer.cornerRadius = outerRadius / 2
+            dotLayer.cornerRadius = outerRadius
             dotLayer.frame = CGRect(x: xValue, y: yValue, width: outerRadius, height: outerRadius)
             self.layer.addSublayer(dotLayer)
             dots.append(dotLayer)

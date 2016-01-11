@@ -1,16 +1,18 @@
 //
-//  FirstViewController.swift
+//  HeartRate.swift
 //  HelvetiSteps
 //
-//  Created by Joseph Drambarean on 2/18/15.
-//  Copyright (c) 2015 Joseph Drambarean. All rights reserved.
+//  Created by Drambarean, Joseph on 1/11/16.
+//  Copyright © 2016 Joseph Drambarean. All rights reserved.
 //
+
+import Foundation
 
 import UIKit
 import HealthKit
 
-class FirstViewController: UIViewController, LineChartDelegate {
-
+class HeartRateViewController: UIViewController, LineChartDelegate {
+    
     let healthKitManager = HealthKitManager.sharedInstance
     @IBOutlet var SegmentedControl: UISegmentedControl!
     @IBOutlet weak var activity: UIActivityIndicatorView!
@@ -19,7 +21,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
         super.viewDidLoad()
         requestHealthKitAuthorization()
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         requestHealthKitAuthorization()
@@ -28,14 +30,14 @@ class FirstViewController: UIViewController, LineChartDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     
     @IBOutlet var valueLabel: UILabel!
     
     
     
     //These are the variables for all of the components of the app
-
+    
     var steps = [HKQuantitySample]()
     
     var stepsForChart = [HKQuantitySample]()
@@ -63,7 +65,7 @@ class FirstViewController: UIViewController, LineChartDelegate {
             } else {
                 print(error!.description)
             }
-        })
+            })
     }
     
     func queryStepsSum() {
@@ -118,22 +120,22 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     
-//    @IBAction func segmentValueChange (sender: AnyObject) {
-//        if SegmentedControl.selectedSegmentIndex == 0 {
-//            self.valueLabel.text = ""
-//            self.queryStepsSum()
-//            self.getDataArray()
-//        }
-//        
-//        if SegmentedControl.selectedSegmentIndex == 1 {
-//            self.valueLabel.text = ""
-//            self.queryDistanceSum()
-//            self.getDataArray()
-//        }
-//    }
+    //    @IBAction func segmentValueChange (sender: AnyObject) {
+    //        if SegmentedControl.selectedSegmentIndex == 0 {
+    //            self.valueLabel.text = ""
+    //            self.queryStepsSum()
+    //            self.getDataArray()
+    //        }
+    //
+    //        if SegmentedControl.selectedSegmentIndex == 1 {
+    //            self.valueLabel.text = ""
+    //            self.queryDistanceSum()
+    //            self.getDataArray()
+    //        }
+    //    }
     
     
-
+    
     
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {
         label.text = "x: \(x)     y: \(yValues)"
@@ -177,16 +179,4 @@ class FirstViewController: UIViewController, LineChartDelegate {
         self.activity.stopAnimating()
     }
     
-}
-
-
-
-
-extension NSDate {
-    func dateByRemovingTime() -> NSDate {
-        let flags: NSCalendarUnit = [.NSDayCalendarUnit, .NSMonthCalendarUnit, .NSYearCalendarUnit]
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components(flags, fromDate: self)
-        return calendar.dateFromComponents(components)!
-    }
 }

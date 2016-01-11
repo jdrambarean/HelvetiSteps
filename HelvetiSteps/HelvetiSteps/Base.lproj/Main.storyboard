@@ -1,104 +1,260 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OhD-1v-vAT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="13k-cd-4eU">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--HelvetiSteps-->
-        <scene sceneID="4Nl-hA-a4F">
+        <!--Distance-->
+        <scene sceneID="gk8-5T-PU4">
             <objects>
-                <viewController title="HelvetiSteps" id="OhD-1v-vAT" customClass="FirstViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2CY-fz-Xre" customClass="DistanceViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6O9-tX-fYg"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lha-T5-ECC"/>
+                        <viewControllerLayoutGuide type="top" id="Qd4-lj-fel"/>
+                        <viewControllerLayoutGuide type="bottom" id="J1r-jO-rfa"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8Oc-6q-RhZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" id="c2T-UD-6mO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTk-sH-0Ub">
-                                <rect key="frame" x="49" y="80" width="276" height="121"/>
-                                <animations/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5S-Y3-C5w">
+                                <rect key="frame" x="49" y="28" width="276" height="188"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="121" id="5KN-WU-HiZ"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-6s-N9F">
-                                <rect key="frame" x="177" y="324" width="20" height="20"/>
-                                <animations/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Running + Walking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9V-15-ds0">
+                                <rect key="frame" x="82" y="224" width="211" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oXT-8z-UgR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="cEP-0y-NmW">
+                                <rect key="frame" x="177" y="253" width="20" height="20"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZW-23-7Du">
-                                <rect key="frame" x="165" y="180" width="44" height="21"/>
-                                <animations/>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J1r-jO-rfa" firstAttribute="top" secondItem="cEP-0y-NmW" secondAttribute="bottom" constant="345" id="Adq-6D-MeP"/>
+                            <constraint firstItem="cEP-0y-NmW" firstAttribute="top" secondItem="R9V-15-ds0" secondAttribute="bottom" constant="8" symbolic="YES" id="Cps-Da-1ZE"/>
+                            <constraint firstItem="M5S-Y3-C5w" firstAttribute="top" secondItem="Qd4-lj-fel" secondAttribute="bottom" constant="8" symbolic="YES" id="JT3-Oq-Q7h"/>
+                            <constraint firstItem="cEP-0y-NmW" firstAttribute="centerX" secondItem="R9V-15-ds0" secondAttribute="centerX" id="Xtq-Gq-CqI"/>
+                            <constraint firstItem="R9V-15-ds0" firstAttribute="top" secondItem="M5S-Y3-C5w" secondAttribute="bottom" constant="8" symbolic="YES" id="bM8-Jf-aeI"/>
+                            <constraint firstItem="R9V-15-ds0" firstAttribute="centerX" secondItem="M5S-Y3-C5w" secondAttribute="centerX" id="m6K-2Q-BPn"/>
+                            <constraint firstItem="cEP-0y-NmW" firstAttribute="centerX" secondItem="c2T-UD-6mO" secondAttribute="centerX" id="qdT-DE-qAX"/>
+                            <constraint firstItem="M5S-Y3-C5w" firstAttribute="leading" secondItem="c2T-UD-6mO" secondAttribute="leadingMargin" constant="33" id="xJX-44-tAR"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Distance" image="Miles" id="cjD-lu-bEa"/>
+                    <connections>
+                        <outlet property="activity" destination="cEP-0y-NmW" id="emp-k8-M5R"/>
+                        <outlet property="valueLabel" destination="M5S-Y3-C5w" id="eRO-Ns-uoE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rr1-h0-tGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767.5" y="1836.5"/>
+        </scene>
+        <!--Steps-->
+        <scene sceneID="DgR-Pu-Ek3">
+            <objects>
+                <viewController storyboardIdentifier="StepsView" id="M1O-Ot-YAb" customClass="StepsViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ysh-QZ-3gc"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Fw-B2-RPq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rwj-I6-7FF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMa-UC-7KO">
+                                <rect key="frame" x="49" y="28" width="276" height="188"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hW9-H5-bzf">
+                                <rect key="frame" x="165" y="231" width="44" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Dtl-IS-iHY"/>
+                                    <constraint firstAttribute="height" constant="21" id="XOm-Lq-UQi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="E0V-Rh-owO">
+                                <rect key="frame" x="177" y="260" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Fw-B2-RPq" firstAttribute="top" secondItem="E0V-Rh-owO" secondAttribute="bottom" constant="338" id="9KJ-XR-nyx"/>
+                            <constraint firstItem="hW9-H5-bzf" firstAttribute="top" secondItem="IMa-UC-7KO" secondAttribute="bottom" constant="15" id="HrD-dq-NvY"/>
+                            <constraint firstItem="IMa-UC-7KO" firstAttribute="centerX" secondItem="rwj-I6-7FF" secondAttribute="centerX" id="Ld3-ks-eId"/>
+                            <constraint firstItem="IMa-UC-7KO" firstAttribute="leading" secondItem="rwj-I6-7FF" secondAttribute="leadingMargin" constant="33" id="UXo-sr-dB6"/>
+                            <constraint firstItem="E0V-Rh-owO" firstAttribute="top" secondItem="hW9-H5-bzf" secondAttribute="bottom" constant="8" symbolic="YES" id="YhR-A3-7GP"/>
+                            <constraint firstItem="E0V-Rh-owO" firstAttribute="centerX" secondItem="hW9-H5-bzf" secondAttribute="centerX" id="hTb-X1-RBC"/>
+                            <constraint firstItem="IMa-UC-7KO" firstAttribute="top" secondItem="ysh-QZ-3gc" secondAttribute="bottom" constant="8" symbolic="YES" id="k3z-co-Zgv"/>
+                            <constraint firstItem="IMa-UC-7KO" firstAttribute="centerX" secondItem="hW9-H5-bzf" secondAttribute="centerX" id="qTQ-06-F7a"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Steps" image="Steps" id="Aa4-Vt-cah"/>
+                    <connections>
+                        <outlet property="activity" destination="E0V-Rh-owO" id="EHl-9D-UO0"/>
+                        <outlet property="valueLabel" destination="IMa-UC-7KO" id="9rP-0Y-dl1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPt-Cz-Oau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="768" y="993"/>
+        </scene>
+        <!--Active Cals-->
+        <scene sceneID="GSc-7t-fVc">
+            <objects>
+                <viewController storyboardIdentifier="ActiveCalsView" id="aeD-B4-LLM" customClass="StepsViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CyB-jW-Eif"/>
+                        <viewControllerLayoutGuide type="bottom" id="6cA-U4-L97"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Y2C-18-bCr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn0-cu-d77">
+                                <rect key="frame" x="49" y="28" width="276" height="188"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="LAD-HS-4U7">
+                                <rect key="frame" x="176" y="260" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Active Calories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdO-9F-eRx">
+                                <rect key="frame" x="95" y="231" width="113" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Ikr-zd-z3E"/>
+                                    <constraint firstAttribute="width" constant="44" id="gqE-62-DdK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HZW-23-7Du" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="160" id="4iq-qn-03T"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="top" secondItem="6O9-tX-fYg" secondAttribute="bottom" constant="60" id="TUT-Vo-ixl"/>
-                            <constraint firstItem="HZW-23-7Du" firstAttribute="bottom" secondItem="jTk-sH-0Ub" secondAttribute="bottom" id="VbH-wO-HhQ"/>
-                            <constraint firstItem="HZW-23-7Du" firstAttribute="centerX" secondItem="jTk-sH-0Ub" secondAttribute="centerX" id="ZG2-IV-qym"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="leading" secondItem="8Oc-6q-RhZ" secondAttribute="leadingMargin" constant="34" id="ch5-9w-ZW7"/>
-                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerX" secondItem="8Oc-6q-RhZ" secondAttribute="centerX" id="dQo-QV-DEq"/>
-                            <constraint firstItem="fz1-6s-N9F" firstAttribute="centerY" secondItem="8Oc-6q-RhZ" secondAttribute="centerY" id="gbp-9D-8v5"/>
-                            <constraint firstItem="jTk-sH-0Ub" firstAttribute="centerX" secondItem="8Oc-6q-RhZ" secondAttribute="centerX" id="kUs-tg-ONc"/>
+                            <constraint firstItem="LAD-HS-4U7" firstAttribute="centerX" secondItem="FdO-9F-eRx" secondAttribute="centerX" id="FoH-Op-KPZ"/>
+                            <constraint firstItem="sn0-cu-d77" firstAttribute="centerX" secondItem="Y2C-18-bCr" secondAttribute="centerX" id="IF5-Ab-f85"/>
+                            <constraint firstItem="sn0-cu-d77" firstAttribute="top" secondItem="CyB-jW-Eif" secondAttribute="bottom" constant="8" symbolic="YES" id="Jp3-xE-ZZw"/>
+                            <constraint firstItem="6cA-U4-L97" firstAttribute="top" secondItem="LAD-HS-4U7" secondAttribute="bottom" constant="338" id="Rci-og-t1G"/>
+                            <constraint firstItem="sn0-cu-d77" firstAttribute="leading" secondItem="Y2C-18-bCr" secondAttribute="leadingMargin" constant="33" id="Vv8-1J-cdJ"/>
+                            <constraint firstItem="LAD-HS-4U7" firstAttribute="top" secondItem="FdO-9F-eRx" secondAttribute="bottom" constant="8" symbolic="YES" id="eE4-7A-Fgi"/>
+                            <constraint firstItem="FdO-9F-eRx" firstAttribute="top" secondItem="sn0-cu-d77" secondAttribute="bottom" constant="15" id="hHq-sD-HMt"/>
+                            <constraint firstItem="sn0-cu-d77" firstAttribute="centerX" secondItem="FdO-9F-eRx" secondAttribute="centerX" id="zTi-gq-pdu"/>
                         </constraints>
                     </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <tabBarItem key="tabBarItem" title="Active Cals" image="Lightning" id="mR9-KX-Vij"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="activity" destination="fz1-6s-N9F" id="hYU-9a-ML6"/>
-                        <outlet property="valueLabel" destination="jTk-sH-0Ub" id="c7O-dm-Ftr"/>
+                        <outlet property="activity" destination="LAD-HS-4U7" id="Wzy-hw-XhG"/>
+                        <outlet property="valueLabel" destination="sn0-cu-d77" id="BJy-q2-fVn"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gm7-j0-Zh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="COU-yW-qyk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="111.5" y="623.5"/>
+            <point key="canvasLocation" x="499.5" y="2660.5"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="G4f-bK-gcf">
+        <!--HelvetiStepsTabView-->
+        <scene sceneID="JNj-Eb-SDv">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="XJK-ZA-fxk" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LTN-sb-htn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController title="HelvetiStepsTabView" id="13k-cd-4eU" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="fv7-ge-8rO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="M1O-Ot-YAb" kind="relationship" relationship="viewControllers" id="S3S-o6-jBj"/>
+                        <segue destination="2CY-fz-Xre" kind="relationship" relationship="viewControllers" id="UwK-YY-TDv"/>
+                        <segue destination="gzL-yK-oOK" kind="relationship" relationship="viewControllers" id="qJm-B3-2y4"/>
+                        <segue destination="aeD-B4-LLM" kind="relationship" relationship="viewControllers" id="aUC-Uo-7RS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aQz-HS-oOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="468" y="1569"/>
+            <point key="canvasLocation" x="-124" y="1387"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="o3a-qw-P9a">
+        <!--Heart Rate-->
+        <scene sceneID="QCc-kV-JeN">
             <objects>
-                <viewController id="x00-HK-Vc7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeartRateView" id="gzL-yK-oOK" customClass="StepsViewController" customModule="HelvetiSteps" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="poP-iJ-egj"/>
-                        <viewControllerLayoutGuide type="bottom" id="3mj-ss-ucz"/>
+                        <viewControllerLayoutGuide type="top" id="ODZ-l8-pKY"/>
+                        <viewControllerLayoutGuide type="bottom" id="sCu-6H-ast"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oPz-CT-eBT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="CmR-Wr-ZLp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vc7-jM-hO3">
-                                <rect key="frame" x="20" y="78" width="531" height="354"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lab-OA-96f">
+                                <rect key="frame" x="49" y="28" width="276" height="188"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Heart Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMO-4u-ahF">
+                                <rect key="frame" x="127" y="231" width="81" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="1zu-QN-r6s"/>
+                                    <constraint firstAttribute="width" constant="44" id="hJz-b5-gsM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Y9J-Pi-bZ5">
+                                <rect key="frame" x="176" y="260" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lab-OA-96f" firstAttribute="top" secondItem="ODZ-l8-pKY" secondAttribute="bottom" constant="8" symbolic="YES" id="M6r-9D-NZS"/>
+                            <constraint firstItem="lab-OA-96f" firstAttribute="centerX" secondItem="oMO-4u-ahF" secondAttribute="centerX" id="NEZ-w5-Gwp"/>
+                            <constraint firstItem="sCu-6H-ast" firstAttribute="top" secondItem="Y9J-Pi-bZ5" secondAttribute="bottom" constant="338" id="Ss5-B8-F02"/>
+                            <constraint firstItem="Y9J-Pi-bZ5" firstAttribute="centerX" secondItem="oMO-4u-ahF" secondAttribute="centerX" id="TQZ-o2-YAj"/>
+                            <constraint firstItem="lab-OA-96f" firstAttribute="leading" secondItem="CmR-Wr-ZLp" secondAttribute="leadingMargin" constant="33" id="ULg-IX-LjB"/>
+                            <constraint firstItem="Y9J-Pi-bZ5" firstAttribute="top" secondItem="oMO-4u-ahF" secondAttribute="bottom" constant="8" symbolic="YES" id="Ulp-c2-7Pd"/>
+                            <constraint firstItem="lab-OA-96f" firstAttribute="centerX" secondItem="CmR-Wr-ZLp" secondAttribute="centerX" id="nvv-Wc-qWX"/>
+                            <constraint firstItem="oMO-4u-ahF" firstAttribute="top" secondItem="lab-OA-96f" secondAttribute="bottom" constant="15" id="xMS-kr-bwW"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Heart Rate" image="Heart" id="Tki-My-nFa"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="activity" destination="Y9J-Pi-bZ5" id="8NQ-bE-6NX"/>
+                        <outlet property="valueLabel" destination="lab-OA-96f" id="13G-8m-pVl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BKg-xz-m1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vF8-bK-giw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713" y="570"/>
+            <point key="canvasLocation" x="15.5" y="2648.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Heart" width="26" height="23"/>
+        <image name="Lightning" width="26" height="31"/>
+        <image name="Miles" width="30" height="30"/>
+        <image name="Steps" width="30" height="30"/>
+    </resources>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -67,7 +67,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     func queryStepsSum() {
-        self.activity.startAnimating()
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
@@ -76,7 +75,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
             if let sumQuantity = result?.sumQuantity() {
                 let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
                 self.valueLabel.text = "\(numberOfSteps)"
-                self.activity.stopAnimating()
             }
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
@@ -85,7 +83,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
     
     
     func queryDistanceSum() {
-        self.activity.startAnimating()
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
@@ -114,7 +111,6 @@ class FirstViewController: UIViewController, LineChartDelegate {
                     let dataArray = results.map {$0.quantity.doubleValueForUnit(self.stepsUnit)}
                     self.chartData = dataArray
                     self.drawChart()
-                    self.activity.stopAnimating()
                 }
         }
         
@@ -144,6 +140,8 @@ class FirstViewController: UIViewController, LineChartDelegate {
     }
     
     func drawChart() {
+        self.activity.startAnimating()
+        
         var views: Dictionary<String, AnyObject> = [:]
         
         self.label.text = "..."
@@ -175,6 +173,8 @@ class FirstViewController: UIViewController, LineChartDelegate {
             //self.lineChart!.clear()
             //self.lineChart!.addLine(data2)
         });
+        
+        self.activity.stopAnimating()
     }
     
 }

@@ -14,7 +14,7 @@ import HealthKit
 class ActiveEnergyViewController: UIViewController, LineChartDelegate {
     
     let healthKitManager = HealthKitManager.sharedInstance
-    @IBOutlet var SegmentedControl: UISegmentedControl!
+    
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -38,7 +38,6 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
     
     //These are the variables for all of the components of the app
     
-    var steps = [HKQuantitySample]()
     
     var stepsForChart = [HKQuantitySample]()
     
@@ -51,90 +50,55 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
     
     var chartData = []
     
-    let stepsCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-    
-    let stepsUnit = HKUnit.countUnit()
     
     func requestHealthKitAuthorization() {
-        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount!, healthKitManager.distanceCount!)
+        let dataTypesToRead = NSSet(objects: healthKitManager.activeCalories!)
         healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as NSSet as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
             if success {
-                self.queryStepsSum()
+                self.queryActiveCaloriesSum()
                 self.getDataArray()
-                //self.querySteps()
             } else {
                 print(error!.description)
             }
             })
     }
     
-    func queryStepsSum() {
+    func queryActiveCaloriesSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
-        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
+        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.activeCalories!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
-                let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
-                self.valueLabel.text = "\(numberOfSteps)"
+                let totalCalories = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.activeCaloriesUnit))
+                self.valueLabel.text = "\(totalCalories)"
             }
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }
     
     
-    
-    func queryDistanceSum() {
-        let sumOption = HKStatisticsOptions.CumulativeSum
-        let startDate = NSDate().dateByRemovingTime()
-        let endDate = NSDate()
-        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
-        let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.distanceCount!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
-            if let sumQuantity = result?.sumQuantity() {
-                let totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
-                self.valueLabel.text = "\(totalDistance)"
-                self.activity.stopAnimating()
-            }
-        }
-        healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
-    }
     
     func getDataArray() {
         self.activity.startAnimating()
-        let stepsCount = HKQuantityType.quantityTypeForIdentifier(
-            HKQuantityTypeIdentifierStepCount)
+        let startDate = NSDate().dateByRemovingTime()
+        let endDate = NSDate()
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
         
-        let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount!,
-            predicate: nil,
+        let calorieSampleQuery = HKSampleQuery(sampleType: HealthKitManager.sharedInstance.activeCalories!,
+            predicate: predicate,
             limit: 100,
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {
-                    let dataArray = results.map {$0.quantity.doubleValueForUnit(self.stepsUnit)}
+                    let dataArray = results.map {$0.quantity.doubleValueForUnit(self.healthKitManager.activeCaloriesUnit)}
                     self.chartData = dataArray
                     self.drawChart()
                 }
         }
         
-        healthKitManager.healthStore?.executeQuery(stepsSampleQuery)
+        healthKitManager.healthStore?.executeQuery(calorieSampleQuery)
     }
-    
-    
-    //    @IBAction func segmentValueChange (sender: AnyObject) {
-    //        if SegmentedControl.selectedSegmentIndex == 0 {
-    //            self.valueLabel.text = ""
-    //            self.queryStepsSum()
-    //            self.getDataArray()
-    //        }
-    //
-    //        if SegmentedControl.selectedSegmentIndex == 1 {
-    //            self.valueLabel.text = ""
-    //            self.queryDistanceSum()
-    //            self.getDataArray()
-    //        }
-    //    }
-    
-    
     
     
     func didSelectDataPoint(x: CGFloat, yValues: Array<CGFloat>) {

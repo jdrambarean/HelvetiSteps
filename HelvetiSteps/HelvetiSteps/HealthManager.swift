@@ -29,22 +29,13 @@ class HealthKitManager {
     
     let stepsCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
     let distanceCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)
-    
+    let heartRate = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)
+    let activeCalories = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned)
+
     let stepsUnit = HKUnit.countUnit()
     let distanceUnit = HKUnit(fromString: "mi")
-    
-    func queryStepsData() {
-        _ = HKStatisticsOptions.CumulativeSum
-        let startDate = NSDate().dateByRemovingTime()
-        let endDate = NSDate()
-        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
-        let statisticsSumQuery = HKStatisticsQuery(quantityType: self.distanceCount!, quantitySamplePredicate: predicate, options: []) { [unowned self] (query, result, error) in
-            if let sumQuantity = result?.sumQuantity() {
-                _ = Int(sumQuantity.doubleValueForUnit(self.distanceUnit))
-    
-            }
-        }
-        self.healthStore?.executeQuery(statisticsSumQuery)
-    }
+    let heartRateUnit = HKUnit(fromString: "count/min")
+    let activeCaloriesUnit = HKUnit(fromString: "cal")
+
 }
 

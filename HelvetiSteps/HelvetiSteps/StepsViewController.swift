@@ -32,7 +32,7 @@ class StepsViewController: UIViewController, LineChartDelegate {
     
     @IBOutlet var valueLabel: UILabel!
     
-    
+    @IBOutlet var chartView: UIContentContainer!
     
     //These are the variables for all of the components of the app
     
@@ -122,7 +122,7 @@ class StepsViewController: UIViewController, LineChartDelegate {
         self.view.addSubview(self.label)
         views["label"] = self.label
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: [], metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-350-[label]", options: [], metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-400-[label]", options: [], metrics: nil, views: views))
         
         let data: Array<CGFloat> = chartData as! Array<CGFloat>
         //var data2: Array<CGFloat> = [1, 3, 5, 13, 17, 20]

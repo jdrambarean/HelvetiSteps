@@ -35,7 +35,7 @@ class HealthKitManager {
     let stepsUnit = HKUnit.countUnit()
     let distanceUnit = HKUnit(fromString: "mi")
     let heartRateUnit = HKUnit(fromString: "count/min")
-    let activeCaloriesUnit = HKUnit(fromString: "cal")
+    let activeCaloriesUnit = HKUnit(fromString: "kcal")
 
 }
 

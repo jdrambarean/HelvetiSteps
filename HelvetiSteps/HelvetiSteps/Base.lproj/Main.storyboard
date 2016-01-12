@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5S-Y3-C5w">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="M5S-Y3-C5w">
                                 <rect key="frame" x="49" y="28" width="276" height="188"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
@@ -51,7 +51,13 @@
                             <constraint firstItem="R9V-15-ds0" firstAttribute="top" secondItem="M5S-Y3-C5w" secondAttribute="bottom" constant="8" symbolic="YES" id="P1r-SD-r2M"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Distance" image="Miles" id="cjD-lu-bEa"/>
+                    <tabBarItem key="tabBarItem" title="Distance" image="Miles" id="cjD-lu-bEa">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="activity" destination="cEP-0y-NmW" id="emp-k8-M5R"/>
                         <outlet property="valueLabel" destination="M5S-Y3-C5w" id="eRO-Ns-uoE"/>
@@ -106,7 +112,13 @@
                             <constraint firstItem="IMa-UC-7KO" firstAttribute="centerX" secondItem="hW9-H5-bzf" secondAttribute="centerX" id="qTQ-06-F7a"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Steps" image="Steps" id="Aa4-Vt-cah"/>
+                    <tabBarItem key="tabBarItem" title="Steps" image="Steps" id="Aa4-Vt-cah">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="activity" destination="E0V-Rh-owO" id="EHl-9D-UO0"/>
                         <outlet property="valueLabel" destination="IMa-UC-7KO" id="9rP-0Y-dl1"/>
@@ -114,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPt-Cz-Oau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="768" y="993"/>
+            <point key="canvasLocation" x="767.5" y="992.5"/>
         </scene>
         <!--Active Cals-->
         <scene sceneID="GSc-7t-fVc">
@@ -128,7 +140,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn0-cu-d77">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="sn0-cu-d77">
                                 <rect key="frame" x="49" y="28" width="276" height="188"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="85"/>
@@ -161,8 +173,19 @@
                             <constraint firstItem="FdO-9F-eRx" firstAttribute="centerX" secondItem="sn0-cu-d77" secondAttribute="centerX" id="kil-6W-yvC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Active Cals" image="Lightning" id="mR9-KX-Vij"/>
+                    <tabBarItem key="tabBarItem" title="Active Cals" image="Lightning" id="mR9-KX-Vij">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                <color key="value" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                            <color key="value" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="activity" destination="LAD-HS-4U7" id="Wzy-hw-XhG"/>
                         <outlet property="valueLabel" destination="sn0-cu-d77" id="BJy-q2-fVn"/>
@@ -238,7 +261,13 @@
                             <constraint firstItem="lab-OA-96f" firstAttribute="leading" secondItem="CmR-Wr-ZLp" secondAttribute="leadingMargin" constant="33" id="xkW-jm-agG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Heart Rate" image="Heart" id="Tki-My-nFa"/>
+                    <tabBarItem key="tabBarItem" title="Heart Rate" image="Heart" id="Tki-My-nFa">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="activity" destination="Y9J-Pi-bZ5" id="8NQ-bE-6NX"/>

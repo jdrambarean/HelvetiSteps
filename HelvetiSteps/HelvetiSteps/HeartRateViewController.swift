@@ -35,7 +35,9 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
     @IBOutlet var valueLabel: UILabel!
     
     @IBAction func refreshView(sender: AnyObject) {
-        requestHealthKitAuthorization()
+        self.lineChart?.clear()
+        self.queryAverageHeartRate()
+        self.getDataArray()
     }
     
     

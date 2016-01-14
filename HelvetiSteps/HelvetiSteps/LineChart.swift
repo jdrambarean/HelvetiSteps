@@ -43,16 +43,16 @@ class LineChart: UIControl {
     var dotsBackgroundColor = UIColor.whiteColor()
     
     // #eeeeee
-    var gridColor = UIColor(red: 238/255.0, green: 238/255.0, blue: 238/255.0, alpha: 1)
+    var gridColor = UIColor.clearColor()
     
     // #607d8b
-    var axesColor = UIColor(red: 96/255.0, green: 125/255.0, blue: 139/255.0, alpha: 1)
+    var axesColor = UIColor.clearColor()
     
     // #f69988
-    var positiveAreaColor = UIColor.whiteColor()
+    var positiveAreaColor = UIColor.clearColor()
     
     // #72d572
-    var negativeAreaColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1)
+    var negativeAreaColor = UIColor.clearColor()
     
     var areaBetweenLines = [-1, -1]
     

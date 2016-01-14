@@ -34,7 +34,9 @@ class DistanceViewController: UIViewController, LineChartDelegate {
     @IBOutlet var valueLabel: UILabel!
     
     @IBAction func refreshView(sender: AnyObject) {
-        requestHealthKitAuthorization()
+        self.lineChart?.clear()
+        self.queryDistanceSum()
+        self.getDataArray()
     }
     
     

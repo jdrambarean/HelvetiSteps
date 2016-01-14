@@ -75,8 +75,10 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.activeCalories!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
+                dispatch_async(dispatch_get_main_queue(), {
                 let totalCalories = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.activeCaloriesUnit))
                 self.valueLabel.text = "\(totalCalories)"
+            })
             }
         }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
@@ -96,6 +98,7 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {
+                    dispatch_async(dispatch_get_main_queue(), {
                     if results == [] {
                         let alert = UIAlertController(title: "Oops", message: "It looks like you don't have any data recorded for this category", preferredStyle: .Alert)
                         let cancelAction: UIAlertAction = UIAlertAction(title: "Dismiss", style: .Cancel) { action -> Void in
@@ -108,6 +111,7 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
                     else { self.chartData = results.map {$0.quantity.doubleValueForUnit(HealthKitManager.sharedInstance.activeCaloriesUnit)}
                         self.drawChart()
                     }
+                    })
                 }
         }
         

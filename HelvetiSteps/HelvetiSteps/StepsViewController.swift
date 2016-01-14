@@ -79,10 +79,13 @@ class StepsViewController: UIViewController, LineChartDelegate {
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
         let statisticsSumQuery = HKStatisticsQuery(quantityType: healthKitManager.stepsCount!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
             if let sumQuantity = result?.sumQuantity() {
+                dispatch_async(dispatch_get_main_queue(), {
                 let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
                 self.valueLabel.text = "\(numberOfSteps)"
-            }
+                })
         }
+
+    }
         healthKitManager.healthStore?.executeQuery(statisticsSumQuery)
     }
     
@@ -102,6 +105,7 @@ class StepsViewController: UIViewController, LineChartDelegate {
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {
+                    dispatch_async(dispatch_get_main_queue(), {
                     if results == [] {
                         let alert = UIAlertController(title: "Oops", message: "It looks like you don't have any data recorded for this category", preferredStyle: .Alert)
                         let cancelAction: UIAlertAction = UIAlertAction(title: "Dismiss", style: .Cancel) { action -> Void in
@@ -113,7 +117,7 @@ class StepsViewController: UIViewController, LineChartDelegate {
                     }
                     else { self.chartData = results.map {$0.quantity.doubleValueForUnit(HealthKitManager.sharedInstance.stepsUnit)}
                         self.drawChart()
-                    }
+                        }})
                 }
         }
         

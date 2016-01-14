@@ -34,7 +34,7 @@ class LineChart: UIControl {
     var dotsVisible = true
     var labelsXVisible = false
     var labelsYVisible = false
-    var areaUnderLinesVisible = false
+    var areaUnderLinesVisible = true
     var numberOfGridLinesX: CGFloat = 100
     var numberOfGridLinesY: CGFloat = 100
     var animationEnabled = true
@@ -151,7 +151,7 @@ class LineChart: UIControl {
         
         // draw filled area between charts
         if areaBetweenLines[0] > -1 && areaBetweenLines[1] > -1 {
-            drawAreaBetweenLineCharts()
+            //drawAreaBetweenLineCharts()
         }
         
         // draw lines
@@ -164,7 +164,7 @@ class LineChart: UIControl {
             if dotsVisible { drawDataDots(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
             
             // draw area under line chart
-            if areaUnderLinesVisible { drawAreaBeneathLineChart(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
+//            if areaUnderLinesVisible { drawAreaBeneathLineChart(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
             
         }
         
@@ -449,42 +449,42 @@ class LineChart: UIControl {
     /**
     * Fill area between charts.
     */
-    func drawAreaBetweenLineCharts() {
-        
-        var xAxis = scaleDataXAxis(dataStore[0])
-        var yAxisDataA = scaleDataYAxis(dataStore[areaBetweenLines[0]])
-        var yAxisDataB = scaleDataYAxis(dataStore[areaBetweenLines[1]])
-        var difference = yAxisDataA - yAxisDataB
-        
-        for index in 0..<xAxis.count-1 {
-            
-            let context = UIGraphicsGetCurrentContext()
-            
-            if difference[index] < 0 {
-                CGContextSetFillColorWithColor(context, negativeAreaColor.CGColor)
-            } else {
-                CGContextSetFillColorWithColor(context, positiveAreaColor.CGColor)
-            }
-            
-            let point1XValue = xAxis[index] + axisInset
-            let point1YValue = self.bounds.height - yAxisDataA[index] - axisInset
-            let point2XValue = xAxis[index] + axisInset
-            let point2YValue = self.bounds.height - yAxisDataB[index] - axisInset
-            let point3XValue = xAxis[index+1] + axisInset
-            let point3YValue = self.bounds.height - yAxisDataB[index+1] - axisInset
-            let point4XValue = xAxis[index+1] + axisInset
-            let point4YValue = self.bounds.height - yAxisDataA[index+1] - axisInset
-            
-            CGContextMoveToPoint(context, point1XValue, point1YValue)
-            CGContextAddLineToPoint(context, point2XValue, point2YValue)
-            CGContextAddLineToPoint(context, point3XValue, point3YValue)
-            CGContextAddLineToPoint(context, point4XValue, point4YValue)
-            CGContextAddLineToPoint(context, point1XValue, point1YValue)
-            CGContextFillPath(context)
-            
-        }
-        
-    }
+//    func drawAreaBetweenLineCharts() {
+//        
+//        var xAxis = scaleDataXAxis(dataStore[0])
+//        var yAxisDataA = scaleDataYAxis(dataStore[areaBetweenLines[0]])
+//        var yAxisDataB = scaleDataYAxis(dataStore[areaBetweenLines[1]])
+//        var difference = yAxisDataA - yAxisDataB
+//        
+//        for index in 0..<xAxis.count-1 {
+//            
+//            let context = UIGraphicsGetCurrentContext()
+//            
+//            if difference[index] < 0 {
+//                CGContextSetFillColorWithColor(context, negativeAreaColor.CGColor)
+//            } else {
+//                CGContextSetFillColorWithColor(context, positiveAreaColor.CGColor)
+//            }
+//            
+//            let point1XValue = xAxis[index] + axisInset
+//            let point1YValue = self.bounds.height - yAxisDataA[index] - axisInset
+//            let point2XValue = xAxis[index] + axisInset
+//            let point2YValue = self.bounds.height - yAxisDataB[index] - axisInset
+//            let point3XValue = xAxis[index+1] + axisInset
+//            let point3YValue = self.bounds.height - yAxisDataB[index+1] - axisInset
+//            let point4XValue = xAxis[index+1] + axisInset
+//            let point4YValue = self.bounds.height - yAxisDataA[index+1] - axisInset
+//            
+//            CGContextMoveToPoint(context, point1XValue, point1YValue)
+//            CGContextAddLineToPoint(context, point2XValue, point2YValue)
+//            CGContextAddLineToPoint(context, point3XValue, point3YValue)
+//            CGContextAddLineToPoint(context, point4XValue, point4YValue)
+//            CGContextAddLineToPoint(context, point1XValue, point1YValue)
+//            CGContextFillPath(context)
+//            
+//        }
+//        
+//    }
     
     
     

@@ -25,10 +25,16 @@ class StepsViewController: UIViewController, LineChartDelegate {
         requestHealthKitAuthorization()
     }
     
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func refreshView(sender: AnyObject) {
+        self.lineChart?.clear()
+        self.queryStepsSum()
+        self.getDataArray()
+    }
     
     @IBOutlet var valueLabel: UILabel!
     
@@ -96,9 +102,18 @@ class StepsViewController: UIViewController, LineChartDelegate {
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {
-                    let dataArray = results.map {$0.quantity.doubleValueForUnit(self.stepsUnit)}
-                    self.chartData = dataArray
-                    self.drawChart()
+                    if results == [] {
+                        let alert = UIAlertController(title: "Oops", message: "It looks like you don't have any data recorded for this category", preferredStyle: .Alert)
+                        let cancelAction: UIAlertAction = UIAlertAction(title: "Dismiss", style: .Cancel) { action -> Void in
+                            self.chartData = [0,0,0,0,0,0,0,0]
+                            self.drawChart()
+                        }
+                        alert.addAction(cancelAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    }
+                    else { self.chartData = results.map {$0.quantity.doubleValueForUnit(HealthKitManager.sharedInstance.stepsUnit)}
+                        self.drawChart()
+                    }
                 }
         }
         

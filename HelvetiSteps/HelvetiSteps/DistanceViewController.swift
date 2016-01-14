@@ -33,6 +33,9 @@ class DistanceViewController: UIViewController, LineChartDelegate {
     
     @IBOutlet var valueLabel: UILabel!
     
+    @IBAction func refreshView(sender: AnyObject) {
+        requestHealthKitAuthorization()
+    }
     
     
     //These are the variables for all of the components of the app
@@ -97,9 +100,18 @@ class DistanceViewController: UIViewController, LineChartDelegate {
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {
-                    let dataArray = results.map {$0.quantity.doubleValueForUnit(self.distanceUnit)}
-                    self.chartData = dataArray
-                    self.drawChart()
+                    if results == [] {
+                        let alert = UIAlertController(title: "Oops", message: "It looks like you don't have any data recorded for this category", preferredStyle: .Alert)
+                        let cancelAction: UIAlertAction = UIAlertAction(title: "Dismiss", style: .Cancel) { action -> Void in
+                            self.chartData = [0,0,0,0,0,0,0,0]
+                            self.drawChart()
+                        }
+                        alert.addAction(cancelAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    }
+                    else { self.chartData = results.map {$0.quantity.doubleValueForUnit(HealthKitManager.sharedInstance.distanceUnit)}
+                        self.drawChart()
+                    }
                 }
         }
         

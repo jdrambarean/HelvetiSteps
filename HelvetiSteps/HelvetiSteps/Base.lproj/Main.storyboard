@@ -38,6 +38,18 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPs-CL-4xo">
+                                <rect key="frame" x="158" y="281" width="58" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="Msb-0D-TEu"/>
+                                </constraints>
+                                <state key="normal" title="refresh">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshView:" destination="2CY-fz-Xre" eventType="touchUpInside" id="SWE-R3-PF1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -49,6 +61,8 @@
                             <constraint firstItem="M5S-Y3-C5w" firstAttribute="centerX" secondItem="c2T-UD-6mO" secondAttribute="centerX" id="FvZ-Lz-a5a"/>
                             <constraint firstItem="M5S-Y3-C5w" firstAttribute="top" secondItem="Qd4-lj-fel" secondAttribute="bottom" constant="8" symbolic="YES" id="KZb-LU-qVf"/>
                             <constraint firstItem="R9V-15-ds0" firstAttribute="top" secondItem="M5S-Y3-C5w" secondAttribute="bottom" constant="8" symbolic="YES" id="P1r-SD-r2M"/>
+                            <constraint firstItem="aPs-CL-4xo" firstAttribute="centerX" secondItem="cEP-0y-NmW" secondAttribute="centerX" id="c3U-DT-vTy"/>
+                            <constraint firstItem="aPs-CL-4xo" firstAttribute="top" secondItem="cEP-0y-NmW" secondAttribute="bottom" constant="8" symbolic="YES" id="rdi-NI-u9v"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Distance" image="Miles" id="cjD-lu-bEa">
@@ -99,6 +113,18 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="E0V-Rh-owO">
                                 <rect key="frame" x="177" y="260" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmW-qy-F1f">
+                                <rect key="frame" x="158" y="294" width="58" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="Q8x-qn-rf2"/>
+                                </constraints>
+                                <state key="normal" title="refresh">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshView:" destination="M1O-Ot-YAb" eventType="touchUpInside" id="DZt-S4-wZ5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -107,9 +133,11 @@
                             <constraint firstItem="IMa-UC-7KO" firstAttribute="centerX" secondItem="rwj-I6-7FF" secondAttribute="centerX" id="Ld3-ks-eId"/>
                             <constraint firstItem="IMa-UC-7KO" firstAttribute="leading" secondItem="rwj-I6-7FF" secondAttribute="leadingMargin" constant="33" id="UXo-sr-dB6"/>
                             <constraint firstItem="E0V-Rh-owO" firstAttribute="top" secondItem="hW9-H5-bzf" secondAttribute="bottom" constant="8" symbolic="YES" id="YhR-A3-7GP"/>
+                            <constraint firstItem="zmW-qy-F1f" firstAttribute="centerY" secondItem="rwj-I6-7FF" secondAttribute="centerY" id="eEd-AK-SpE"/>
                             <constraint firstItem="E0V-Rh-owO" firstAttribute="centerX" secondItem="hW9-H5-bzf" secondAttribute="centerX" id="hTb-X1-RBC"/>
                             <constraint firstItem="IMa-UC-7KO" firstAttribute="top" secondItem="ysh-QZ-3gc" secondAttribute="bottom" constant="8" symbolic="YES" id="k3z-co-Zgv"/>
                             <constraint firstItem="IMa-UC-7KO" firstAttribute="centerX" secondItem="hW9-H5-bzf" secondAttribute="centerX" id="qTQ-06-F7a"/>
+                            <constraint firstItem="zmW-qy-F1f" firstAttribute="centerX" secondItem="E0V-Rh-owO" secondAttribute="centerX" id="vlG-s1-sIR"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Steps" image="Steps" id="Aa4-Vt-cah">
@@ -160,17 +188,31 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKj-cr-7Gh">
+                                <rect key="frame" x="158" y="294" width="58" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="sQ6-kR-jjl"/>
+                                </constraints>
+                                <state key="normal" title="refresh">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshView:" destination="aeD-B4-LLM" eventType="touchUpInside" id="R7r-P7-iCa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LAD-HS-4U7" firstAttribute="top" secondItem="FdO-9F-eRx" secondAttribute="bottom" constant="8" symbolic="YES" id="78H-fm-M7P"/>
                             <constraint firstItem="sn0-cu-d77" firstAttribute="top" secondItem="CyB-jW-Eif" secondAttribute="bottom" constant="8" symbolic="YES" id="A0r-1s-dQG"/>
                             <constraint firstItem="sn0-cu-d77" firstAttribute="leading" secondItem="Y2C-18-bCr" secondAttribute="leadingMargin" constant="33" id="BQK-uZ-tfi"/>
+                            <constraint firstItem="QKj-cr-7Gh" firstAttribute="centerX" secondItem="FdO-9F-eRx" secondAttribute="centerX" id="GeU-8u-jWf"/>
                             <constraint firstItem="FdO-9F-eRx" firstAttribute="top" secondItem="sn0-cu-d77" secondAttribute="bottom" constant="15" id="LWZ-RA-W3U"/>
                             <constraint firstItem="FdO-9F-eRx" firstAttribute="centerX" secondItem="LAD-HS-4U7" secondAttribute="centerX" id="aIF-7F-Gu3"/>
                             <constraint firstItem="6cA-U4-L97" firstAttribute="top" secondItem="LAD-HS-4U7" secondAttribute="bottom" constant="338" id="du9-ne-7iv"/>
                             <constraint firstItem="sn0-cu-d77" firstAttribute="centerX" secondItem="Y2C-18-bCr" secondAttribute="centerX" id="hvx-9G-6DR"/>
                             <constraint firstItem="FdO-9F-eRx" firstAttribute="centerX" secondItem="sn0-cu-d77" secondAttribute="centerX" id="kil-6W-yvC"/>
+                            <constraint firstItem="QKj-cr-7Gh" firstAttribute="centerY" secondItem="Y2C-18-bCr" secondAttribute="centerY" id="t9m-eX-Ner"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Active Cals" image="Lightning" id="mR9-KX-Vij">
@@ -248,15 +290,29 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mj3-Kb-bMc">
+                                <rect key="frame" x="157" y="294" width="58" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="wTs-cw-rkY"/>
+                                </constraints>
+                                <state key="normal" title="refresh">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshView:" destination="gzL-yK-oOK" eventType="touchUpInside" id="k9u-fk-4wx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Y9J-Pi-bZ5" firstAttribute="top" secondItem="oMO-4u-ahF" secondAttribute="bottom" constant="8" symbolic="YES" id="8V1-0d-VSt"/>
                             <constraint firstItem="lab-OA-96f" firstAttribute="centerX" secondItem="CmR-Wr-ZLp" secondAttribute="centerX" id="Awq-ov-ZI4"/>
+                            <constraint firstItem="Mj3-Kb-bMc" firstAttribute="centerX" secondItem="Y9J-Pi-bZ5" secondAttribute="centerX" id="Rdj-UB-hnH"/>
                             <constraint firstItem="sCu-6H-ast" firstAttribute="top" secondItem="Y9J-Pi-bZ5" secondAttribute="bottom" constant="338" id="UmY-d1-x4S"/>
                             <constraint firstItem="oMO-4u-ahF" firstAttribute="top" secondItem="lab-OA-96f" secondAttribute="bottom" constant="15" id="VXY-HN-yXY"/>
                             <constraint firstItem="Y9J-Pi-bZ5" firstAttribute="centerX" secondItem="oMO-4u-ahF" secondAttribute="centerX" id="Xrq-CI-GTB"/>
                             <constraint firstItem="lab-OA-96f" firstAttribute="centerX" secondItem="oMO-4u-ahF" secondAttribute="centerX" id="m6G-jQ-rxW"/>
+                            <constraint firstItem="Mj3-Kb-bMc" firstAttribute="centerY" secondItem="CmR-Wr-ZLp" secondAttribute="centerY" id="nhB-hK-QGn"/>
                             <constraint firstItem="lab-OA-96f" firstAttribute="top" secondItem="ODZ-l8-pKY" secondAttribute="bottom" constant="8" symbolic="YES" id="xYt-Bg-6U4"/>
                             <constraint firstItem="lab-OA-96f" firstAttribute="leading" secondItem="CmR-Wr-ZLp" secondAttribute="leadingMargin" constant="33" id="xkW-jm-agG"/>
                         </constraints>

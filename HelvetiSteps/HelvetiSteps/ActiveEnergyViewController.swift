@@ -35,7 +35,6 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
     @IBOutlet var valueLabel: UILabel!
     
     @IBAction func refreshView(sender: AnyObject) {
-        self.lineChart?.clear()
         self.queryActiveCaloriesSum()
         self.getDataArray()
     }
@@ -125,7 +124,8 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
     
     func drawChart() {
         self.activity.startAnimating()
-        
+        self.lineChart?.clear()
+
         var views: Dictionary<String, AnyObject> = [:]
         
         self.label.text = "..."

@@ -35,7 +35,6 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
     @IBOutlet var valueLabel: UILabel!
     
     @IBAction func refreshView(sender: AnyObject) {
-        self.lineChart?.clear()
         self.queryAverageHeartRate()
         self.getDataArray()
     }
@@ -128,7 +127,7 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
     
     func drawChart() {
         self.activity.startAnimating()
-        
+        self.lineChart?.clear()
         var views: Dictionary<String, AnyObject> = [:]
         
         self.label.text = "..."

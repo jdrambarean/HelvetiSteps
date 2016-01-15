@@ -34,7 +34,7 @@ class DistanceViewController: UIViewController, LineChartDelegate {
     @IBOutlet var valueLabel: UILabel!
     
     @IBAction func refreshView(sender: AnyObject) {
-        self.lineChart?.clear()
+
         self.queryDistanceSum()
         self.getDataArray()
     }
@@ -131,7 +131,7 @@ class DistanceViewController: UIViewController, LineChartDelegate {
     
     func drawChart() {
         self.activity.startAnimating()
-        
+        self.lineChart?.clear()
         var views: Dictionary<String, AnyObject> = [:]
         
         self.label.text = "..."

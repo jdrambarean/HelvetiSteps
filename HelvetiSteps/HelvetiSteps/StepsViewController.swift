@@ -31,7 +31,6 @@ class StepsViewController: UIViewController, LineChartDelegate {
     }
     
     @IBAction func refreshView(sender: AnyObject) {
-        self.lineChart?.clear()
         self.queryStepsSum()
         self.getDataArray()
     }
@@ -132,7 +131,7 @@ class StepsViewController: UIViewController, LineChartDelegate {
     
     func drawChart() {
         self.activity.startAnimating()
-        
+        self.lineChart?.clear()
         var views: Dictionary<String, AnyObject> = [:]
         
         self.label.text = "..."

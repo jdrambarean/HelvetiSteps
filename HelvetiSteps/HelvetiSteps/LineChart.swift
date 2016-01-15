@@ -161,7 +161,7 @@ class LineChart: UIControl {
             drawLine(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex)
             
             // draw dots
-            if dotsVisible { drawDataDots(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
+            //if dotsVisible { drawDataDots(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
             
             // draw area under line chart
 //            if areaUnderLinesVisible { drawAreaBeneathLineChart(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
@@ -290,34 +290,34 @@ class LineChart: UIControl {
     /**
     * Draw small dot at every data point.
     */
-    func drawDataDots(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
-        var dots: Array<DotCALayer> = []
-        for index in 0..<xAxis.count {
-            let xValue = xAxis[index] + axisInset - outerRadius/2
-            let yValue = self.bounds.height - yAxis[index] - axisInset - outerRadius/2
-            
-            // draw custom layer with another layer in the center
-            let dotLayer = DotCALayer()
-            dotLayer.dotInnerColor = colors[lineIndex]
-            dotLayer.innerRadius = innerRadius
-            dotLayer.backgroundColor = dotsBackgroundColor.CGColor
-            dotLayer.cornerRadius = outerRadius
-            dotLayer.frame = CGRect(x: xValue, y: yValue, width: outerRadius, height: outerRadius)
-            self.layer.addSublayer(dotLayer)
-            dots.append(dotLayer)
-            
-            // animate opacity
-            if animationEnabled {
-                let animation = CABasicAnimation(keyPath: "opacity")
-                animation.duration = animationDuration
-                animation.fromValue = 0
-                animation.toValue = 1
-                dotLayer.addAnimation(animation, forKey: "opacity")
-            }
-            
-        }
-        dotsDataStore.append(dots)
-    }
+//    func drawDataDots(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
+//        var dots: Array<DotCALayer> = []
+//        for index in 0..<xAxis.count {
+//            let xValue = xAxis[index] + axisInset - outerRadius/2
+//            let yValue = self.bounds.height - yAxis[index] - axisInset - outerRadius/2
+//            
+//            // draw custom layer with another layer in the center
+//            let dotLayer = DotCALayer()
+//            dotLayer.dotInnerColor = colors[lineIndex]
+//            dotLayer.innerRadius = innerRadius
+//            dotLayer.backgroundColor = dotsBackgroundColor.CGColor
+//            dotLayer.cornerRadius = outerRadius
+//            dotLayer.frame = CGRect(x: xValue, y: yValue, width: outerRadius, height: outerRadius)
+//            self.layer.addSublayer(dotLayer)
+//            dots.append(dotLayer)
+//            
+//            // animate opacity
+//            if animationEnabled {
+//                let animation = CABasicAnimation(keyPath: "opacity")
+//                animation.duration = animationDuration
+//                animation.fromValue = 0
+//                animation.toValue = 1
+//                dotLayer.addAnimation(animation, forKey: "opacity")
+//            }
+//            
+//        }
+//        dotsDataStore.append(dots)
+//    }
     
     
     

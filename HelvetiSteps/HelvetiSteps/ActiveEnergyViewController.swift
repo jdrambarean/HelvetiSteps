@@ -27,6 +27,10 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
         requestHealthKitAuthorization()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        self.lineChart?.clear()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -93,7 +97,7 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate {
         
         let calorieSampleQuery = HKSampleQuery(sampleType: HealthKitManager.sharedInstance.activeCalories!,
             predicate: predicate,
-            limit: 100,
+            limit: 30,
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {

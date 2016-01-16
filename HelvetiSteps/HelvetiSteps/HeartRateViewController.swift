@@ -27,6 +27,10 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
         requestHealthKitAuthorization()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        self.lineChart?.clear()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

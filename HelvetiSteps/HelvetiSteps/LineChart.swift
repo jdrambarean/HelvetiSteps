@@ -38,7 +38,7 @@ class LineChart: UIControl {
     var numberOfGridLinesX: CGFloat = 100
     var numberOfGridLinesY: CGFloat = 100
     var animationEnabled = true
-    var animationDuration: CFTimeInterval = 1
+    var animationDuration: CFTimeInterval = 4
     
     var dotsBackgroundColor = UIColor.whiteColor()
     

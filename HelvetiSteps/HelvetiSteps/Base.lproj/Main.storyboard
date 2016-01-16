@@ -25,10 +25,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="cEP-0y-NmW">
-                                <rect key="frame" x="177" y="264" width="20" height="20"/>
+                                <rect key="frame" x="177" y="261" width="20" height="20"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPs-CL-4xo">
-                                <rect key="frame" x="158" y="292" width="58" height="30"/>
+                                <rect key="frame" x="158" y="294" width="58" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="Msb-0D-TEu"/>
                                 </constraints>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Miles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9V-15-ds0">
-                                <rect key="frame" x="156" y="235" width="63" height="21"/>
+                                <rect key="frame" x="156" y="231" width="63" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Ifj-N6-oBX"/>
                                     <constraint firstAttribute="width" constant="63" id="JSN-6c-azL"/>
@@ -54,14 +54,14 @@
                         <constraints>
                             <constraint firstItem="cEP-0y-NmW" firstAttribute="centerX" secondItem="R9V-15-ds0" secondAttribute="centerX" id="3fL-sh-GqY"/>
                             <constraint firstItem="M5S-Y3-C5w" firstAttribute="leading" secondItem="c2T-UD-6mO" secondAttribute="leadingMargin" constant="33" id="5Y8-5w-Tfm"/>
-                            <constraint firstItem="J1r-jO-rfa" firstAttribute="top" secondItem="cEP-0y-NmW" secondAttribute="bottom" constant="334" id="5lB-pN-gGS"/>
-                            <constraint firstItem="cEP-0y-NmW" firstAttribute="top" secondItem="R9V-15-ds0" secondAttribute="bottom" constant="8" symbolic="YES" id="CgK-D6-cSv"/>
+                            <constraint firstItem="J1r-jO-rfa" firstAttribute="top" secondItem="cEP-0y-NmW" secondAttribute="bottom" constant="337" id="5lB-pN-gGS"/>
+                            <constraint firstItem="cEP-0y-NmW" firstAttribute="top" secondItem="R9V-15-ds0" secondAttribute="bottom" constant="9" id="CgK-D6-cSv"/>
                             <constraint firstItem="M5S-Y3-C5w" firstAttribute="centerX" secondItem="R9V-15-ds0" secondAttribute="centerX" id="Efu-RX-zZR"/>
                             <constraint firstItem="M5S-Y3-C5w" firstAttribute="centerX" secondItem="c2T-UD-6mO" secondAttribute="centerX" id="FvZ-Lz-a5a"/>
                             <constraint firstItem="M5S-Y3-C5w" firstAttribute="top" secondItem="Qd4-lj-fel" secondAttribute="bottom" constant="8" symbolic="YES" id="KZb-LU-qVf"/>
-                            <constraint firstItem="R9V-15-ds0" firstAttribute="top" secondItem="M5S-Y3-C5w" secondAttribute="bottom" constant="19" id="P1r-SD-r2M"/>
+                            <constraint firstItem="R9V-15-ds0" firstAttribute="top" secondItem="M5S-Y3-C5w" secondAttribute="bottom" constant="15" id="P1r-SD-r2M"/>
                             <constraint firstItem="aPs-CL-4xo" firstAttribute="centerX" secondItem="cEP-0y-NmW" secondAttribute="centerX" id="c3U-DT-vTy"/>
-                            <constraint firstItem="aPs-CL-4xo" firstAttribute="top" secondItem="cEP-0y-NmW" secondAttribute="bottom" constant="8" symbolic="YES" id="rdi-NI-u9v"/>
+                            <constraint firstItem="aPs-CL-4xo" firstAttribute="top" secondItem="cEP-0y-NmW" secondAttribute="bottom" constant="13" id="rdi-NI-u9v"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Distance" image="Miles" id="cjD-lu-bEa">

@@ -1,4 +1,6 @@
 # HelvetiSteps
-An iOS HealthKit app that counts steps and distance
 
-This is an app that I'm using to learn about how healthkit works. I've implemented a simple query, as well as a chart that takes integers from the query and draws it in a pretty way.
+HelvetiSteps is a beautifully minimal app designed to give you only the information you need concerning your burned calories and effort during a single day window. The app provides a trend graph that shows spikes of activity over the course of the twenty four hour period, and also shows averaged data for your heart rate entries.
+If you're bored of the interface provided by Apple, and looking for a lean modern look, then this is the HealthKit app for you!
+
+Coming soon: I'll bee adding some more HealthKit items to the app as well as GameCenter support.

@@ -117,7 +117,7 @@ class DistanceViewController: UIViewController, LineChartDelegate, GKGameCenterC
         
         let distanceSampleQuery = HKSampleQuery(sampleType: distanceCount!,
             predicate: predicate,
-            limit: 100,
+            limit: 500,
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {

@@ -110,7 +110,7 @@ class ActiveEnergyViewController: UIViewController, LineChartDelegate, GKGameCen
         
         let calorieSampleQuery = HKSampleQuery(sampleType: HealthKitManager.sharedInstance.activeCalories!,
             predicate: predicate,
-            limit: 30,
+            limit: 500,
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {

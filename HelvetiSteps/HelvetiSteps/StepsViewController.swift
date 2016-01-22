@@ -132,7 +132,7 @@ class StepsViewController: UIViewController, LineChartDelegate, GKGameCenterCont
         
         let stepsSampleQuery = HKSampleQuery(sampleType: stepsCount!,
             predicate: predicate,
-            limit: 100,
+            limit: 500,
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {

@@ -20,12 +20,14 @@ class HeartRateViewController: UIViewController, LineChartDelegate, GKGameCenter
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lineChart?.clear()
         requestHealthKitAuthorization()
         self.authenticateLocalPlayer()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
+        self.lineChart?.clear()
         requestHealthKitAuthorization()
         self.authenticateLocalPlayer()
     }

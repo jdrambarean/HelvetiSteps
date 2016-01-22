@@ -18,7 +18,9 @@ class StepsViewController: UIViewController, LineChartDelegate, GKGameCenterCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lineChart?.clear()
         requestHealthKitAuthorization()
+        self.authenticateLocalPlayer()
     }
     
     override func viewDidAppear(animated: Bool) {

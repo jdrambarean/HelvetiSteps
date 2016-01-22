@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import HealthKit
+import GameKit
 
-class DistanceViewController: UIViewController, LineChartDelegate {
+class DistanceViewController: UIViewController, LineChartDelegate, GKGameCenterControllerDelegate {
     
     let healthKitManager = HealthKitManager.sharedInstance
     
@@ -19,11 +20,13 @@ class DistanceViewController: UIViewController, LineChartDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        self.authenticateLocalPlayer()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        self.authenticateLocalPlayer()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -61,6 +64,12 @@ class DistanceViewController: UIViewController, LineChartDelegate {
     let distanceUnit = HKUnit(fromString: "mi")
     
     let distanceCount = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning)
+    
+    var score = 0
+    
+    var gcEnabled = Bool()
+    
+    var gcdefaultLeaderBoard = String()
 
 
     
@@ -86,6 +95,8 @@ class DistanceViewController: UIViewController, LineChartDelegate {
                 dispatch_async(dispatch_get_main_queue(), {
                 let totalDistance = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.distanceUnit))
                 self.valueLabel.text = "\(totalDistance)"
+                self.score = totalDistance
+                self.submitScore()
                 })
             }
         }
@@ -169,6 +180,57 @@ class DistanceViewController: UIViewController, LineChartDelegate {
         });
         
         self.activity.stopAnimating()
+    }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else {
+                        self.gcdefaultLeaderBoard = leaderboardIdentifer!
+                    }
+                })
+                
+                
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated, disabling game center")
+                print(error)
+            }
+            
+        }
+        
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func submitScore() {
+        let leaderboardID = "DLBD"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(self.score)
+        
+        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Score submitted")
+                
+            }
+        })
     }
     
 }

@@ -10,8 +10,9 @@ import Foundation
 
 import UIKit
 import HealthKit
+import GameKit
 
-class HeartRateViewController: UIViewController, LineChartDelegate {
+class HeartRateViewController: UIViewController, LineChartDelegate, GKGameCenterControllerDelegate {
     
     let healthKitManager = HealthKitManager.sharedInstance
     
@@ -20,11 +21,13 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        self.authenticateLocalPlayer()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        self.authenticateLocalPlayer()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -58,6 +61,11 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
     
     var chartData = []
     
+    var score = 0
+    
+    var gcEnabled = Bool()
+    
+    var gcdefaultLeaderBoard = String()
     
     
     func requestHealthKitAuthorization() {
@@ -82,6 +90,8 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
                 dispatch_async(dispatch_get_main_queue(), {
                 let averageHeartRate = Int(quantity.doubleValueForUnit(self.healthKitManager.heartRateUnit))
                     self.valueLabel.text = "\(averageHeartRate)"
+                    self.score = averageHeartRate
+                    self.submitScore()
                 })
                 }
 
@@ -165,6 +175,57 @@ class HeartRateViewController: UIViewController, LineChartDelegate {
         });
         
         self.activity.stopAnimating()
+    }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else {
+                        self.gcdefaultLeaderBoard = leaderboardIdentifer!
+                    }
+                })
+                
+                
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated, disabling game center")
+                print(error)
+            }
+            
+        }
+        
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func submitScore() {
+        let leaderboardID = "HRLB"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(self.score)
+        
+        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Score submitted")
+                
+            }
+        })
     }
     
 }

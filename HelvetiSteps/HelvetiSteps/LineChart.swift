@@ -85,7 +85,7 @@ class LineChart: UIControl {
         
         // category10 colors from d3 - https://github.com/mbostock/d3/wiki/Ordinal-Scales
         self.colors = [
-            UIColor.whiteColor(),
+            UIColor.grayColor(),
             UIColorFromHex(0xff7f0e),
             UIColorFromHex(0x2ca02c),
             UIColorFromHex(0xd62728),

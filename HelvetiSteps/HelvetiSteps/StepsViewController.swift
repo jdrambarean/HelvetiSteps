@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import HealthKit
+import GameKit
 
-class StepsViewController: UIViewController, LineChartDelegate {
+class StepsViewController: UIViewController, LineChartDelegate, GKGameCenterControllerDelegate {
     
     let healthKitManager = HealthKitManager.sharedInstance
     @IBOutlet weak var activity: UIActivityIndicatorView!
@@ -23,6 +24,7 @@ class StepsViewController: UIViewController, LineChartDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
         requestHealthKitAuthorization()
+        self.authenticateLocalPlayer()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -62,6 +64,12 @@ class StepsViewController: UIViewController, LineChartDelegate {
     
     let stepsUnit = HKUnit.countUnit()
     
+    var score = 0
+    
+    var gcEnabled = Bool()
+    
+    var gcdefaultLeaderBoard = String()
+    
     func requestHealthKitAuthorization() {
         let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount!, healthKitManager.distanceCount!)
         healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as NSSet as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
@@ -75,6 +83,21 @@ class StepsViewController: UIViewController, LineChartDelegate {
             })
     }
     
+    func submitScore() {
+        let leaderboardID = "STPL"
+        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
+        sScore.value = Int64(self.score)
+        
+        GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                print("Score submitted")
+                
+            }
+        })
+    }
+    
     func queryStepsSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
@@ -85,6 +108,8 @@ class StepsViewController: UIViewController, LineChartDelegate {
                 dispatch_async(dispatch_get_main_queue(), {
                 let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
                 self.valueLabel.text = "\(numberOfSteps)"
+                self.score = numberOfSteps
+                self.submitScore()
                 })
         }
 
@@ -169,6 +194,52 @@ class StepsViewController: UIViewController, LineChartDelegate {
         });
         
         self.activity.stopAnimating()
+    }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else {
+                        self.gcdefaultLeaderBoard = leaderboardIdentifer!
+                    }
+                })
+                
+                
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated, disabling game center")
+                print(error)
+            }
+            
+        }
+        
+    }
+    
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    @IBAction func showLeaderboard(sender: UIButton) {
+        let gcVC: GKGameCenterViewController = GKGameCenterViewController()
+        gcVC.gameCenterDelegate = self
+        gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+        gcVC.leaderboardIdentifier = "STPL"
+        self.presentViewController(gcVC, animated: true, completion: nil)
     }
     
 }

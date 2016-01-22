@@ -20,6 +20,8 @@
 		8D0EAB031C44009000757D79 /* DistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0EAB021C44009000757D79 /* DistanceViewController.swift */; };
 		8D0EAB051C4400B400757D79 /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0EAB041C4400B400757D79 /* HeartRateViewController.swift */; };
 		8D0EAB071C44011400757D79 /* ActiveEnergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0EAB061C44011400757D79 /* ActiveEnergyViewController.swift */; };
+		8DA20E6D1C5156CE001368CF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA20E6C1C5156CE001368CF /* GameKit.framework */; };
+		8DA20E6F1C51B79D001368CF /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA20E6E1C51B79D001368CF /* LeaderBoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		8D0EAB021C44009000757D79 /* DistanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceViewController.swift; sourceTree = "<group>"; };
 		8D0EAB041C4400B400757D79 /* HeartRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
 		8D0EAB061C44011400757D79 /* ActiveEnergyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveEnergyViewController.swift; sourceTree = "<group>"; };
+		8DA20E6C1C5156CE001368CF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		8DA20E6E1C51B79D001368CF /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57466DF51A95601400655632 /* HealthKit.framework in Frameworks */,
+				8DA20E6D1C5156CE001368CF /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +80,7 @@
 		57466DC41A955F9400655632 = {
 			isa = PBXGroup;
 			children = (
+				8DA20E6C1C5156CE001368CF /* GameKit.framework */,
 				57466DF41A95601400655632 /* HealthKit.framework */,
 				57466DCF1A955F9400655632 /* HelvetiSteps */,
 				57466DE71A955F9500655632 /* HelvetiStepsTests */,
@@ -104,6 +110,7 @@
 				8D0EAB021C44009000757D79 /* DistanceViewController.swift */,
 				8D0EAB041C4400B400757D79 /* HeartRateViewController.swift */,
 				8D0EAB061C44011400757D79 /* ActiveEnergyViewController.swift */,
+				8DA20E6E1C51B79D001368CF /* LeaderBoardViewController.swift */,
 				57466DDB1A955F9400655632 /* Images.xcassets */,
 				57466DDD1A955F9400655632 /* LaunchScreen.xib */,
 				57466DD01A955F9400655632 /* Supporting Files */,
@@ -189,6 +196,9 @@
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = GSXURZ9YKT;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};
@@ -248,6 +258,7 @@
 				57466DD31A955F9400655632 /* AppDelegate.swift in Sources */,
 				8D0EAB051C4400B400757D79 /* HeartRateViewController.swift in Sources */,
 				8D0EAB031C44009000757D79 /* DistanceViewController.swift in Sources */,
+				8DA20E6F1C51B79D001368CF /* LeaderBoardViewController.swift in Sources */,
 				8D0EAB071C44011400757D79 /* ActiveEnergyViewController.swift in Sources */,
 				8D0EAB011C44007800757D79 /* StepsViewController.swift in Sources */,
 				57466DF81A9560AF00655632 /* HealthManager.swift in Sources */,

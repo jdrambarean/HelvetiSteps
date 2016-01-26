@@ -23,8 +23,6 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        
-        requestHealthKitAuthorization()
     }
 
     override func didDeactivate() {
@@ -69,9 +67,12 @@ class InterfaceController: WKInterfaceController {
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
-        let statisticsSumQuery = HKStatisticsQuery(quantityType: self.stepsCount!, quantitySamplePredicate: predicate, options: sumOption) { [unowned self] (query, result, error) in
-            if let sumQuantity = result?.sumQuantity() {
+        print("loading1")
+        let statisticsSumQuery = HKStatisticsQuery(quantityType: self.stepsCount!, quantitySamplePredicate: predicate, options: sumOption){ [unowned self] (query, result, error) in
+            if let sumQuantity = result!.sumQuantity() {
+                print("loading2")
                 dispatch_async(dispatch_get_main_queue(), {
+                    print("loading3")
                     let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.stepsUnit))
                     self.stepsCountLabel.setText("\(numberOfSteps)")
                     print("success")
@@ -79,6 +80,7 @@ class InterfaceController: WKInterfaceController {
             }
             
         }
+        print("loading1.5")
         self.healthStore?.executeQuery(statisticsSumQuery)
     }
     

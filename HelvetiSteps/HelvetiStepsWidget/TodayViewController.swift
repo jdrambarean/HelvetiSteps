@@ -19,9 +19,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         updateStepsCountLabel()
     }
     
+    
+    override func viewDidAppear(animated: Bool) {
+        updateStepsCountLabel()
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        requestHealthKitAuthorization()
     }
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {

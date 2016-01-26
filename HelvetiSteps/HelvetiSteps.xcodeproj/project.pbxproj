@@ -933,6 +933,7 @@
 				8DE76EB41C57BBF10000D24B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8DE76EDC1C57CE520000D24B /* Build configuration list for PBXNativeTarget "HelvetiSteps Watch Extension" */ = {
 			isa = XCConfigurationList;
@@ -941,6 +942,7 @@
 				8DE76EDE1C57CE520000D24B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8DE76EE01C57CE520000D24B /* Build configuration list for PBXNativeTarget "HelvetiSteps Watch" */ = {
 			isa = XCConfigurationList;
@@ -949,6 +951,7 @@
 				8DE76EE21C57CE520000D24B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

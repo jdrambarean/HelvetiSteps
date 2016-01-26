@@ -10,10 +10,12 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HelvetiSteps_Watch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Steps" id="HVI-QI-VfF">
-                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        <label alignment="left" text="Today's Steps" id="HVI-QI-VfF">
+                            <fontDescription key="font" type="system" pointSize="12"/>
                         </label>
-                        <label alignment="center" verticalAlignment="center" text="Label" id="Eza-Mh-pde"/>
+                        <label alignment="center" verticalAlignment="center" text="Loading" id="Eza-Mh-pde">
+                            <fontDescription key="font" type="system" pointSize="33"/>
+                        </label>
                     </items>
                     <connections>
                         <outlet property="stepsCountLabel" destination="Eza-Mh-pde" id="SCd-gP-e5n"/>
@@ -29,14 +31,16 @@
                     <items>
                         <group alignment="left" id="gv7-I2-MZq">
                             <items>
-                                <label alignment="left" text="Steps" id="pcP-Cj-BwG">
-                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                <label alignment="left" text="Today's Steps" id="pcP-Cj-BwG">
+                                    <fontDescription key="font" type="system" pointSize="12"/>
                                 </label>
                             </items>
                         </group>
                         <group alignment="left" id="eew-Gs-W6Y">
                             <items>
-                                <label alignment="center" verticalAlignment="center" text="Label" id="7O3-qH-wM9"/>
+                                <label alignment="center" verticalAlignment="center" text="Loading" id="7O3-qH-wM9">
+                                    <fontDescription key="font" type="system" pointSize="33"/>
+                                </label>
                             </items>
                         </group>
                     </items>

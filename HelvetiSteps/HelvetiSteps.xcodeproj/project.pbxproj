@@ -22,6 +22,22 @@
 		8D0EAB071C44011400757D79 /* ActiveEnergyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0EAB061C44011400757D79 /* ActiveEnergyViewController.swift */; };
 		8DA20E6D1C5156CE001368CF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DA20E6C1C5156CE001368CF /* GameKit.framework */; };
 		8DA20E6F1C51B79D001368CF /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA20E6E1C51B79D001368CF /* LeaderBoardViewController.swift */; };
+		8DE76EA81C57BBF10000D24B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE76EA71C57BBF10000D24B /* NotificationCenter.framework */; };
+		8DE76EAB1C57BBF10000D24B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE76EAA1C57BBF10000D24B /* TodayViewController.swift */; };
+		8DE76EAE1C57BBF10000D24B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DE76EAC1C57BBF10000D24B /* MainInterface.storyboard */; };
+		8DE76EB21C57BBF10000D24B /* HelvetiStepsWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8DE76EA51C57BBF10000D24B /* HelvetiStepsWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8DE76EB71C57BDD30000D24B /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57466DF71A9560AF00655632 /* HealthManager.swift */; };
+		8DE76EC11C57CE520000D24B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DE76EBF1C57CE520000D24B /* Interface.storyboard */; };
+		8DE76EC31C57CE520000D24B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE76EC21C57CE520000D24B /* Assets.xcassets */; };
+		8DE76ECA1C57CE520000D24B /* HelvetiSteps Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8DE76EC91C57CE520000D24B /* HelvetiSteps Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8DE76ECF1C57CE520000D24B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE76ECE1C57CE520000D24B /* InterfaceController.swift */; };
+		8DE76ED11C57CE520000D24B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE76ED01C57CE520000D24B /* ExtensionDelegate.swift */; };
+		8DE76ED31C57CE520000D24B /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE76ED21C57CE520000D24B /* GlanceController.swift */; };
+		8DE76ED51C57CE520000D24B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE76ED41C57CE520000D24B /* ComplicationController.swift */; };
+		8DE76ED71C57CE520000D24B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE76ED61C57CE520000D24B /* Assets.xcassets */; };
+		8DE76EDB1C57CE520000D24B /* HelvetiSteps Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8DE76EBD1C57CE520000D24B /* HelvetiSteps Watch.app */; };
+		8DE76EE91C57DB550000D24B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57466DF41A95601400655632 /* HealthKit.framework */; };
+		8DE76EEC1C57DB850000D24B /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE76EEB1C57DB850000D24B /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +48,64 @@
 			remoteGlobalIDString = 57466DCC1A955F9400655632;
 			remoteInfo = HelvetiSteps;
 		};
+		8DE76EB01C57BBF10000D24B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57466DC51A955F9400655632 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DE76EA41C57BBF10000D24B;
+			remoteInfo = HelvetiStepsWidget;
+		};
+		8DE76ECB1C57CE520000D24B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57466DC51A955F9400655632 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DE76EC81C57CE520000D24B;
+			remoteInfo = "HelvetiSteps Watch Extension";
+		};
+		8DE76ED91C57CE520000D24B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57466DC51A955F9400655632 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DE76EBC1C57CE520000D24B;
+			remoteInfo = "HelvetiSteps Watch";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DE76EB61C57BBF10000D24B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8DE76EB21C57BBF10000D24B /* HelvetiStepsWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DE76EDF1C57CE520000D24B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8DE76ECA1C57CE520000D24B /* HelvetiSteps Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DE76EE31C57CE520000D24B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				8DE76EDB1C57CE520000D24B /* HelvetiSteps Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		571FACB31AB3961B009C0DD7 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
@@ -55,6 +128,26 @@
 		8D0EAB061C44011400757D79 /* ActiveEnergyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveEnergyViewController.swift; sourceTree = "<group>"; };
 		8DA20E6C1C5156CE001368CF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8DA20E6E1C51B79D001368CF /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
+		8DE76EA51C57BBF10000D24B /* HelvetiStepsWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HelvetiStepsWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DE76EA71C57BBF10000D24B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8DE76EAA1C57BBF10000D24B /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		8DE76EAD1C57BBF10000D24B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		8DE76EAF1C57BBF10000D24B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DE76EBD1C57CE520000D24B /* HelvetiSteps Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HelvetiSteps Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DE76EC01C57CE520000D24B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		8DE76EC21C57CE520000D24B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DE76EC41C57CE520000D24B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DE76EC91C57CE520000D24B /* HelvetiSteps Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HelvetiSteps Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DE76ECE1C57CE520000D24B /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		8DE76ED01C57CE520000D24B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		8DE76ED21C57CE520000D24B /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		8DE76ED41C57CE520000D24B /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		8DE76ED61C57CE520000D24B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DE76ED81C57CE520000D24B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DE76EE81C57DB550000D24B /* HelvetiStepsWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = HelvetiStepsWidget.entitlements; path = HelvetiStepsWidget/HelvetiStepsWidget.entitlements; sourceTree = "<group>"; };
+		8DE76EEA1C57DB710000D24B /* HelvetiSteps Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "HelvetiSteps Watch.entitlements"; sourceTree = "<group>"; };
+		8DE76EEB1C57DB850000D24B /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.1.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		8DE76EED1C57DB850000D24B /* HelvetiSteps Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "HelvetiSteps Watch Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,16 +167,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DE76EA21C57BBF10000D24B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE76EA81C57BBF10000D24B /* NotificationCenter.framework in Frameworks */,
+				8DE76EE91C57DB550000D24B /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DE76EC61C57CE520000D24B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE76EEC1C57DB850000D24B /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		57466DC41A955F9400655632 = {
 			isa = PBXGroup;
 			children = (
+				8DE76EE81C57DB550000D24B /* HelvetiStepsWidget.entitlements */,
 				8DA20E6C1C5156CE001368CF /* GameKit.framework */,
 				57466DF41A95601400655632 /* HealthKit.framework */,
 				57466DCF1A955F9400655632 /* HelvetiSteps */,
 				57466DE71A955F9500655632 /* HelvetiStepsTests */,
+				8DE76EA91C57BBF10000D24B /* HelvetiSteps */,
+				8DE76EBE1C57CE520000D24B /* HelvetiSteps Watch */,
+				8DE76ECD1C57CE520000D24B /* HelvetiSteps Watch Extension */,
+				8DE76EA61C57BBF10000D24B /* Frameworks */,
 				57466DCE1A955F9400655632 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,6 +208,9 @@
 			children = (
 				57466DCD1A955F9400655632 /* HelvetiSteps.app */,
 				57466DE41A955F9500655632 /* HelvetiStepsTests.xctest */,
+				8DE76EA51C57BBF10000D24B /* HelvetiStepsWidget.appex */,
+				8DE76EBD1C57CE520000D24B /* HelvetiSteps Watch.app */,
+				8DE76EC91C57CE520000D24B /* HelvetiSteps Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +261,51 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8DE76EA61C57BBF10000D24B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8DE76EEB1C57DB850000D24B /* HealthKit.framework */,
+				8DE76EA71C57BBF10000D24B /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8DE76EA91C57BBF10000D24B /* HelvetiSteps */ = {
+			isa = PBXGroup;
+			children = (
+				8DE76EAA1C57BBF10000D24B /* TodayViewController.swift */,
+				8DE76EAC1C57BBF10000D24B /* MainInterface.storyboard */,
+				8DE76EAF1C57BBF10000D24B /* Info.plist */,
+			);
+			name = HelvetiSteps;
+			path = HelvetiStepsWidget;
+			sourceTree = "<group>";
+		};
+		8DE76EBE1C57CE520000D24B /* HelvetiSteps Watch */ = {
+			isa = PBXGroup;
+			children = (
+				8DE76EEA1C57DB710000D24B /* HelvetiSteps Watch.entitlements */,
+				8DE76EBF1C57CE520000D24B /* Interface.storyboard */,
+				8DE76EC21C57CE520000D24B /* Assets.xcassets */,
+				8DE76EC41C57CE520000D24B /* Info.plist */,
+			);
+			path = "HelvetiSteps Watch";
+			sourceTree = "<group>";
+		};
+		8DE76ECD1C57CE520000D24B /* HelvetiSteps Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8DE76EED1C57DB850000D24B /* HelvetiSteps Watch Extension.entitlements */,
+				8DE76ECE1C57CE520000D24B /* InterfaceController.swift */,
+				8DE76ED01C57CE520000D24B /* ExtensionDelegate.swift */,
+				8DE76ED21C57CE520000D24B /* GlanceController.swift */,
+				8DE76ED41C57CE520000D24B /* ComplicationController.swift */,
+				8DE76ED61C57CE520000D24B /* Assets.xcassets */,
+				8DE76ED81C57CE520000D24B /* Info.plist */,
+			);
+			path = "HelvetiSteps Watch Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,10 +316,14 @@
 				57466DC91A955F9400655632 /* Sources */,
 				57466DCA1A955F9400655632 /* Frameworks */,
 				57466DCB1A955F9400655632 /* Resources */,
+				8DE76EB61C57BBF10000D24B /* Embed App Extensions */,
+				8DE76EE31C57CE520000D24B /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8DE76EB11C57BBF10000D24B /* PBXTargetDependency */,
+				8DE76EDA1C57CE520000D24B /* PBXTargetDependency */,
 			);
 			name = HelvetiSteps;
 			productName = HelvetiSteps;
@@ -181,6 +348,57 @@
 			productReference = 57466DE41A955F9500655632 /* HelvetiStepsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8DE76EA41C57BBF10000D24B /* HelvetiStepsWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DE76EB51C57BBF10000D24B /* Build configuration list for PBXNativeTarget "HelvetiStepsWidget" */;
+			buildPhases = (
+				8DE76EA11C57BBF10000D24B /* Sources */,
+				8DE76EA21C57BBF10000D24B /* Frameworks */,
+				8DE76EA31C57BBF10000D24B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelvetiStepsWidget;
+			productName = HelvetiStepsWidget;
+			productReference = 8DE76EA51C57BBF10000D24B /* HelvetiStepsWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		8DE76EBC1C57CE520000D24B /* HelvetiSteps Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DE76EE01C57CE520000D24B /* Build configuration list for PBXNativeTarget "HelvetiSteps Watch" */;
+			buildPhases = (
+				8DE76EBB1C57CE520000D24B /* Resources */,
+				8DE76EDF1C57CE520000D24B /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DE76ECC1C57CE520000D24B /* PBXTargetDependency */,
+			);
+			name = "HelvetiSteps Watch";
+			productName = "HelvetiSteps Watch";
+			productReference = 8DE76EBD1C57CE520000D24B /* HelvetiSteps Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		8DE76EC81C57CE520000D24B /* HelvetiSteps Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DE76EDC1C57CE520000D24B /* Build configuration list for PBXNativeTarget "HelvetiSteps Watch Extension" */;
+			buildPhases = (
+				8DE76EC51C57CE520000D24B /* Sources */,
+				8DE76EC61C57CE520000D24B /* Frameworks */,
+				8DE76EC71C57CE520000D24B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HelvetiSteps Watch Extension";
+			productName = "HelvetiSteps Watch Extension";
+			productReference = 8DE76EC91C57CE520000D24B /* HelvetiSteps Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -188,7 +406,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Joseph Drambarean";
 				TargetAttributes = {
@@ -208,6 +426,33 @@
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 57466DCC1A955F9400655632;
 					};
+					8DE76EA41C57BBF10000D24B = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GSXURZ9YKT;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+					8DE76EBC1C57CE520000D24B = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GSXURZ9YKT;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					8DE76EC81C57CE520000D24B = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GSXURZ9YKT;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 57466DC81A955F9400655632 /* Build configuration list for PBXProject "HelvetiSteps" */;
@@ -225,6 +470,9 @@
 			targets = (
 				57466DCC1A955F9400655632 /* HelvetiSteps */,
 				57466DE31A955F9500655632 /* HelvetiStepsTests */,
+				8DE76EA41C57BBF10000D24B /* HelvetiStepsWidget */,
+				8DE76EBC1C57CE520000D24B /* HelvetiSteps Watch */,
+				8DE76EC81C57CE520000D24B /* HelvetiSteps Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +492,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DE76EA31C57BBF10000D24B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE76EAE1C57BBF10000D24B /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DE76EBB1C57CE520000D24B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE76EC31C57CE520000D24B /* Assets.xcassets in Resources */,
+				8DE76EC11C57CE520000D24B /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DE76EC71C57CE520000D24B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE76ED71C57CE520000D24B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +547,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DE76EA11C57BBF10000D24B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE76EAB1C57BBF10000D24B /* TodayViewController.swift in Sources */,
+				8DE76EB71C57BDD30000D24B /* HealthManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DE76EC51C57CE520000D24B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE76ED11C57CE520000D24B /* ExtensionDelegate.swift in Sources */,
+				8DE76ED51C57CE520000D24B /* ComplicationController.swift in Sources */,
+				8DE76ECF1C57CE520000D24B /* InterfaceController.swift in Sources */,
+				8DE76ED31C57CE520000D24B /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -281,6 +574,21 @@
 			isa = PBXTargetDependency;
 			target = 57466DCC1A955F9400655632 /* HelvetiSteps */;
 			targetProxy = 57466DE51A955F9500655632 /* PBXContainerItemProxy */;
+		};
+		8DE76EB11C57BBF10000D24B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DE76EA41C57BBF10000D24B /* HelvetiStepsWidget */;
+			targetProxy = 8DE76EB01C57BBF10000D24B /* PBXContainerItemProxy */;
+		};
+		8DE76ECC1C57CE520000D24B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DE76EC81C57CE520000D24B /* HelvetiSteps Watch Extension */;
+			targetProxy = 8DE76ECB1C57CE520000D24B /* PBXContainerItemProxy */;
+		};
+		8DE76EDA1C57CE520000D24B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DE76EBC1C57CE520000D24B /* HelvetiSteps Watch */;
+			targetProxy = 8DE76ED91C57CE520000D24B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -299,6 +607,22 @@
 				57466DDE1A955F9400655632 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		8DE76EAC1C57BBF10000D24B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DE76EAD1C57BBF10000D24B /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		8DE76EBF1C57CE520000D24B /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DE76EC01C57CE520000D24B /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -387,6 +711,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = HelvetiSteps/HelvetiSteps.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = HelvetiSteps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -400,6 +725,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = HelvetiSteps/HelvetiSteps.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = HelvetiSteps/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -442,6 +768,134 @@
 			};
 			name = Release;
 		};
+		8DE76EB31C57BBF10000D24B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HelvetiStepsWidget/HelvetiStepsWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = HelvetiStepsWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HelvetiSteps.HelvetiSteps.HelvetiStepsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8DE76EB41C57BBF10000D24B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HelvetiStepsWidget/HelvetiStepsWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = HelvetiStepsWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HelvetiSteps.HelvetiSteps.HelvetiStepsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		8DE76EDD1C57CE520000D24B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "HelvetiSteps Watch Extension/HelvetiSteps Watch Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "HelvetiSteps Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HelvetiSteps.HelvetiSteps.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		8DE76EDE1C57CE520000D24B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "HelvetiSteps Watch Extension/HelvetiSteps Watch Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "HelvetiSteps Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HelvetiSteps.HelvetiSteps.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
+		8DE76EE11C57CE520000D24B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "HelvetiSteps Watch/HelvetiSteps Watch.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = HelvetiSteps_Watch_Extension;
+				INFOPLIST_FILE = "HelvetiSteps Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = HelvetiSteps.HelvetiSteps.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		8DE76EE21C57CE520000D24B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "HelvetiSteps Watch/HelvetiSteps Watch.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IBSC_MODULE = HelvetiSteps_Watch_Extension;
+				INFOPLIST_FILE = "HelvetiSteps Watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = HelvetiSteps.HelvetiSteps.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -471,6 +925,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8DE76EB51C57BBF10000D24B /* Build configuration list for PBXNativeTarget "HelvetiStepsWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DE76EB31C57BBF10000D24B /* Debug */,
+				8DE76EB41C57BBF10000D24B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8DE76EDC1C57CE520000D24B /* Build configuration list for PBXNativeTarget "HelvetiSteps Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DE76EDD1C57CE520000D24B /* Debug */,
+				8DE76EDE1C57CE520000D24B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8DE76EE01C57CE520000D24B /* Build configuration list for PBXNativeTarget "HelvetiSteps Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DE76EE11C57CE520000D24B /* Debug */,
+				8DE76EE21C57CE520000D24B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -15,13 +15,13 @@ class GlanceController: WKInterfaceController {
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        requestHealthKitAuthorization()
+        queryStepsSum()
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        requestHealthKitAuthorization()
+        queryStepsSum()
     }
 
     override func didDeactivate() {
@@ -30,7 +30,7 @@ class GlanceController: WKInterfaceController {
     }
     
     func updateStepsCountLabel() {
-        requestHealthKitAuthorization()
+        queryStepsSum()
     }
     
         let healthStore: HKHealthStore? = {

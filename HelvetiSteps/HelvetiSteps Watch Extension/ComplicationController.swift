@@ -23,28 +23,18 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     var steps = [HKQuantitySample]()
     var calculatedSteps = 0
     
-    func requestHealthKitAuthorization() {
-        let dataTypesToRead = NSSet(objects: stepsCount!, distanceCount!)
-        healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as NSSet as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
-            if success {
-                self.queryStepsSum()
-            } else {
-                print(error!.description)
-            }
-            })
-    }
     
     func queryStepsSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
-        print("loading1")
+        print("1")
         let statisticsSumQuery = HKStatisticsQuery(quantityType: stepsCount!, quantitySamplePredicate: predicate, options: sumOption){ [unowned self] (query, result, error) in
             if let sumQuantity = result!.sumQuantity() {
-                print("loading2")
+                print("2")
                 dispatch_async(dispatch_get_main_queue(), {
-                    print("loading3")
+                    print("3")
                     let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.stepsUnit))
                     self.calculatedSteps = numberOfSteps
                     let prefs = NSUserDefaults.standardUserDefaults()
@@ -55,7 +45,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             }
             
         }
-        print("loading1.5")
+        print("4")
         healthStore?.executeQuery(statisticsSumQuery)
     }
     
@@ -81,7 +71,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntryForComplication(complication: CLKComplication, withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
-        requestHealthKitAuthorization()
+        self.queryStepsSum()
         let prefs = NSUserDefaults.standardUserDefaults()
         let stepsData = prefs.integerForKey("calculatedSteps")
         calculatedSteps = stepsData
@@ -122,8 +112,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getNextRequestedUpdateDateWithHandler(handler: (NSDate?) -> Void) {
         // Call the handler with the date when you would next like to be given the opportunity to update your complication content
-        requestHealthKitAuthorization()
-        handler(NSDate(timeIntervalSinceNow: 5))
+        handler(NSDate(timeIntervalSinceNow: 15))
+        self.queryStepsSum()
     }
     
     // MARK: - Placeholder Templates

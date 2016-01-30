@@ -85,6 +85,7 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func refreshData() {
+        self.stepsCountLabel.setText("Loading")
         requestHealthKitAuthorization()
     }
     

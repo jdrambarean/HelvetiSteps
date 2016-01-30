@@ -13,20 +13,20 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        requestHealthKitAuthorization()
+        queryStepsSum()
     }
 
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        requestHealthKitAuthorization()
+        queryStepsSum()
     }
 
     func applicationWillResignActive() {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
         
-        requestHealthKitAuthorization()
+        queryStepsSum()
     }
     
     let healthStore: HKHealthStore? = {
@@ -65,12 +65,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         let startDate = NSDate().dateByRemovingTime()
         let endDate = NSDate()
         let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: [])
-        print("loading1")
+        print("1")
         let statisticsSumQuery = HKStatisticsQuery(quantityType: self.stepsCount!, quantitySamplePredicate: predicate, options: sumOption){ [unowned self] (query, result, error) in
             if let sumQuantity = result!.sumQuantity() {
-                print("loading2")
+                print("2")
                 dispatch_async(dispatch_get_main_queue(), {
-                    print("loading3")
+                    print("3")
                     let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.stepsUnit))
                     self.calculatedSteps = numberOfSteps
                     print("success")
@@ -78,7 +78,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
             
         }
-        print("loading1.5")
+        print("4")
         self.healthStore?.executeQuery(statisticsSumQuery)
     }
     

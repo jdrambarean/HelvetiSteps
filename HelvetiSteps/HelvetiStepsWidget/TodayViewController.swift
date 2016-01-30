@@ -16,12 +16,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateStepsCountLabel()
+        self.updateStepsCountLabel()
     }
     
     
     override func viewDidAppear(animated: Bool) {
-        updateStepsCountLabel()
+        widgetPerformUpdateWithCompletionHandler { (NCUpdateResult) -> Void in
+            self.updateStepsCountLabel()
+        }
     }
     
     

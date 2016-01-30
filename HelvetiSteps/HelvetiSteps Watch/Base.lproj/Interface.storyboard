@@ -35,13 +35,15 @@
                 <glanceController spacing="0.0" bottomTemplateType="extraLargeBody1Group" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="HelvetiSteps_Watch" customModuleProvider="target">
                     <items>
                         <group alignment="left" id="gv7-I2-MZq"/>
-                        <label alignment="left" text="0" id="P3P-Fn-d5v" userLabel="stepsCountLabel"/>
+                        <label alignment="left" text="0" minimumScaleFactor="0.10000000000000001" id="P3P-Fn-d5v" userLabel="stepsCountLabel">
+                            <variation key="device=watch38mm" minimumScaleFactor="0.10000000000000001"/>
+                        </label>
                         <label alignment="left" text="Today's Steps" id="u6c-xX-CYt"/>
                         <group alignment="left" id="eew-Gs-W6Y"/>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
-                        <outlet property="stepsCountLabel" destination="P3P-Fn-d5v" id="iYc-x9-p2P"/>
+                        <outlet property="stepsCountLabel" destination="P3P-Fn-d5v" id="KFd-d1-bcd"/>
                     </connections>
                 </glanceController>
             </objects>

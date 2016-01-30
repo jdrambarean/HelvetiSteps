@@ -84,5 +84,8 @@ class InterfaceController: WKInterfaceController {
         self.healthStore?.executeQuery(statisticsSumQuery)
     }
     
+    @IBAction func refreshData() {
+        requestHealthKitAuthorization()
+    }
     
 }

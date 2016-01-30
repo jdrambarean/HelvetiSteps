@@ -16,6 +16,11 @@
                         <label alignment="center" verticalAlignment="center" text="Loading" id="Eza-Mh-pde">
                             <fontDescription key="font" type="system" pointSize="33"/>
                         </label>
+                        <button width="1" alignment="left" title="Refresh Data" id="XrT-bF-s9o">
+                            <connections>
+                                <action selector="refreshData" destination="AgC-eL-Hgc" id="gKE-FV-GPJ"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="stepsCountLabel" destination="Eza-Mh-pde" id="SCd-gP-e5n"/>
@@ -27,26 +32,16 @@
         <!--Glance Interface Controller-->
         <scene sceneID="rjY-Ar-IMT">
             <objects>
-                <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="HelvetiSteps_Watch" customModuleProvider="target">
+                <glanceController spacing="0.0" bottomTemplateType="extraLargeBody1Group" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="HelvetiSteps_Watch" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="gv7-I2-MZq">
-                            <items>
-                                <label alignment="left" text="Today's Steps" id="pcP-Cj-BwG">
-                                    <fontDescription key="font" type="system" pointSize="12"/>
-                                </label>
-                            </items>
-                        </group>
-                        <group alignment="left" id="eew-Gs-W6Y">
-                            <items>
-                                <label alignment="center" verticalAlignment="center" text="Loading" id="7O3-qH-wM9">
-                                    <fontDescription key="font" type="system" pointSize="33"/>
-                                </label>
-                            </items>
-                        </group>
+                        <group alignment="left" id="gv7-I2-MZq"/>
+                        <label alignment="left" text="0" id="P3P-Fn-d5v" userLabel="stepsCountLabel"/>
+                        <label alignment="left" text="Today's Steps" id="u6c-xX-CYt"/>
+                        <group alignment="left" id="eew-Gs-W6Y"/>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
                     <connections>
-                        <outlet property="stepsCountLabel" destination="7O3-qH-wM9" id="4fJ-Ow-sIm"/>
+                        <outlet property="stepsCountLabel" destination="P3P-Fn-d5v" id="iYc-x9-p2P"/>
                     </connections>
                 </glanceController>
             </objects>

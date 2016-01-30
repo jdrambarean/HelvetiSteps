@@ -166,7 +166,7 @@ class HeartRateViewController: UIViewController, LineChartDelegate, GKGameCenter
         self.view.addSubview(self.lineChart!)
         views["chart"] = self.lineChart
         self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[chart]-|", options: [], metrics: nil, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==185)]", options: [], metrics: nil, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[label]-[chart(==150)]", options: [], metrics: nil, views: views))
         
         let delta: Int64 = 4 * Int64(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, delta)

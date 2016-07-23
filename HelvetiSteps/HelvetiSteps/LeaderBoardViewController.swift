@@ -19,7 +19,7 @@ class LeaderBoardViewController: UIViewController, GKGameCenterControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         authenticateLocalPlayer()
-        showLeaderboard()
+        //showLeaderboard()
         
     }
     

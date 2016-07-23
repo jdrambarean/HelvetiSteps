@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -14,36 +14,31 @@
                         <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" preservesSuperviewLayoutMargins="YES" id="S3S-Oj-5AN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caK-wm-e9Y">
-                                <rect key="frame" x="120" y="4" width="160" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="djR-Vi-bSd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="39"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="caK-wm-e9Y">
+                                <rect key="frame" x="101" y="0.0" width="167" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="39"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KW-8M-7W6">
-                                <rect key="frame" x="40" y="4" width="107" height="48"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Steps" translatesAutoresizingMaskIntoConstraints="NO" id="Gy6-d9-DGy">
+                                <rect key="frame" x="56" y="17" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="107" id="lpm-OI-w2a"/>
+                                    <constraint firstAttribute="width" constant="30" id="Un4-GU-fx1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="39"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="9KW-8M-7W6" secondAttribute="bottom" constant="8" symbolic="YES" id="Dsb-h0-NTQ"/>
-                            <constraint firstItem="9KW-8M-7W6" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="4" id="KYP-Y6-qf6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="caK-wm-e9Y" secondAttribute="trailing" constant="24" id="Tgl-24-53l"/>
-                            <constraint firstItem="9KW-8M-7W6" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="24" id="Z4K-Lb-Jx0"/>
-                            <constraint firstItem="caK-wm-e9Y" firstAttribute="baseline" secondItem="9KW-8M-7W6" secondAttribute="baseline" id="h00-00-RaU"/>
-                            <constraint firstItem="caK-wm-e9Y" firstAttribute="top" secondItem="9KW-8M-7W6" secondAttribute="top" id="jMM-aG-Pvq"/>
+                            <constraint firstItem="caK-wm-e9Y" firstAttribute="bottom" secondItem="FKl-LY-JtV" secondAttribute="top" id="A4s-Ar-BGQ"/>
+                            <constraint firstItem="Gy6-d9-DGy" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="40" id="AQm-Od-aqW"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="Gy6-d9-DGy" secondAttribute="bottom" constant="13" id="S1A-RQ-2ad"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="caK-wm-e9Y" secondAttribute="trailing" constant="36" id="iOC-AM-P9c"/>
+                            <constraint firstItem="caK-wm-e9Y" firstAttribute="leading" secondItem="Gy6-d9-DGy" secondAttribute="trailing" constant="15" id="jTI-mj-Ajs"/>
+                            <constraint firstItem="caK-wm-e9Y" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="qr9-hY-Dif"/>
+                            <constraint firstItem="Gy6-d9-DGy" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="17" id="zjd-0N-RLh"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -61,4 +56,7 @@
             <point key="canvasLocation" x="516" y="284"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Steps" width="30" height="30"/>
+    </resources>
 </document>

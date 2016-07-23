@@ -70,7 +70,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             if let sumQuantity = result?.sumQuantity() {
                 dispatch_async(dispatch_get_main_queue(), {
                     let numberOfSteps = Int(sumQuantity.doubleValueForUnit(self.healthKitManager.stepsUnit))
-                    self.stepsCountLabel.text = "\(numberOfSteps)"
+                    self.stepsCountLabel.text = "\(numberOfSteps) Steps"
                 })
             }
             

@@ -18,14 +18,14 @@ class StepsViewController: UIViewController, LineChartDelegate, GKGameCenterCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.lineChart?.clear()
+        //self.lineChart?.clear()
         requestHealthKitAuthorization()
         self.authenticateLocalPlayer()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
-        self.lineChart?.clear()
+        //self.lineChart?.clear()
         requestHealthKitAuthorization()
         self.authenticateLocalPlayer()
     }
@@ -79,6 +79,7 @@ class StepsViewController: UIViewController, LineChartDelegate, GKGameCenterCont
             if success {
                 self.queryStepsSum()
                 self.getDataArray()
+                //self.drawChart()
                 //self.querySteps()
             } else {
                 print(error!.description)

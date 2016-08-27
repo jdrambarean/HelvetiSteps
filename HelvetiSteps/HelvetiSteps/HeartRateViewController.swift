@@ -111,7 +111,7 @@ class HeartRateViewController: UIViewController, LineChartDelegate, GKGameCenter
         
         let heartRateSampleQuery = HKSampleQuery(sampleType: HealthKitManager.sharedInstance.heartRate!,
             predicate: predicate,
-            limit: 500,
+            limit: 25,
             sortDescriptors: nil)
             { [unowned self] (query, results, error) in
                 if let results = results as? [HKQuantitySample] {

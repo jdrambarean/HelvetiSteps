@@ -33,8 +33,8 @@ class LineChart: UIControl {
     var axesVisible = false
     var dotsVisible = true
     var labelsXVisible = false
-    var labelsYVisible = false
-    var areaUnderLinesVisible = true
+    var labelsYVisible = true
+    var areaUnderLinesVisible = false
     var numberOfGridLinesX: CGFloat = 100
     var numberOfGridLinesY: CGFloat = 100
     var animationEnabled = false
@@ -52,13 +52,13 @@ class LineChart: UIControl {
     var positiveAreaColor = UIColor.clearColor()
     
     // #72d572
-    var negativeAreaColor = UIColor.grayColor()
+    var negativeAreaColor = UIColor.whiteColor()
     
     var areaBetweenLines = [-1, -1]
     
     // sizes
     var lineWidth: CGFloat = 2
-    var outerRadius: CGFloat = 12
+    var outerRadius: CGFloat = 1
     var innerRadius: CGFloat = 8
     var outerRadiusHighlighted: CGFloat = 12
     var innerRadiusHighlighted: CGFloat = 8
@@ -73,7 +73,7 @@ class LineChart: UIControl {
     var dataStore: Array<Array<CGFloat>> = []
     var dotsDataStore: Array<Array<DotCALayer>> = []
     var lineLayerStore: Array<CAShapeLayer> = []
-    var colors: Array<UIColor> = [UIColor.grayColor()]
+    var colors: Array<UIColor> = [UIColor.clearColor()]
     
     var removeAll: Bool = false
     
@@ -86,7 +86,7 @@ class LineChart: UIControl {
         // category10 colors from d3 - https://github.com/mbostock/d3/wiki/Ordinal-Scales
         self.colors = [
             UIColor.grayColor(),
-            UIColorFromHex(0xff7f0e),
+            UIColor.clearColor(),
             UIColorFromHex(0x2ca02c),
             UIColorFromHex(0xd62728),
             UIColorFromHex(0x9467bd),
@@ -164,7 +164,8 @@ class LineChart: UIControl {
             if dotsVisible { drawDataDots(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
             
             // draw area under line chart
-            if areaUnderLinesVisible { drawAreaBeneathLineChart(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
+            if areaUnderLinesVisible { //drawAreaBeneathLineChart(scaledDataXAxis, yAxis: scaledDataYAxis, lineIndex: lineIndex) }
+            }
             
         }
         
@@ -293,8 +294,8 @@ class LineChart: UIControl {
     func drawDataDots(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
         var dots: Array<DotCALayer> = []
         for index in 0..<xAxis.count {
-            let xValue = xAxis[index] + axisInset - outerRadius/2
-            let yValue = self.bounds.height - yAxis[index] - axisInset - outerRadius/2
+            let xValue = xAxis[index] + axisInset - outerRadius/8
+            let yValue = self.bounds.height - yAxis[index] - axisInset - outerRadius/8
             
             // draw custom layer with another layer in the center
             let dotLayer = DotCALayer()
@@ -424,25 +425,25 @@ class LineChart: UIControl {
     /**
      * Fill area between line chart and x-axis.
      */
-    func drawAreaBeneathLineChart(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
-        let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, colors[lineIndex].colorWithAlphaComponent(0.2).CGColor)
-        // move to origin
-        CGContextMoveToPoint(context, axisInset, self.bounds.height - axisInset)
-        // add line to first data point
-        CGContextAddLineToPoint(context, axisInset, self.bounds.height - yAxis[0] - axisInset)
-        // draw whole line chart
-        for index in 1..<xAxis.count {
-            let xValue = xAxis[index] + axisInset
-            let yValue = self.bounds.height - yAxis[index] - axisInset
-            CGContextAddLineToPoint(context, xValue, yValue)
-        }
-        // move down to x axis
-        CGContextAddLineToPoint(context, xAxis[xAxis.count-1] + axisInset, self.bounds.height - axisInset)
-        // move to origin
-        CGContextAddLineToPoint(context, axisInset, self.bounds.height - axisInset)
-        CGContextFillPath(context)
-    }
+//    func drawAreaBeneathLineChart(xAxis: Array<CGFloat>, yAxis: Array<CGFloat>, lineIndex: Int) {
+//        let context = UIGraphicsGetCurrentContext()
+//        CGContextSetFillColorWithColor(context, colors[lineIndex].colorWithAlphaComponent(0.2).CGColor)
+//        // move to origin
+//        CGContextMoveToPoint(context, axisInset, self.bounds.height - axisInset)
+//        // add line to first data point
+//        CGContextAddLineToPoint(context, axisInset, self.bounds.height - yAxis[0] - axisInset)
+//        // draw whole line chart
+//        for index in 1..<xAxis.count {
+//            let xValue = xAxis[index] + axisInset
+//            let yValue = self.bounds.height - yAxis[index] - axisInset
+//            CGContextAddLineToPoint(context, xValue, yValue)
+//        }
+//        // move down to x axis
+//        CGContextAddLineToPoint(context, xAxis[xAxis.count-1] + axisInset, self.bounds.height - axisInset)
+//        // move to origin
+//        CGContextAddLineToPoint(context, axisInset, self.bounds.height - axisInset)
+//        CGContextFillPath(context)
+//    }
     
     
     

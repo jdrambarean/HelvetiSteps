@@ -16,13 +16,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateStepsCountLabel()
+        self.queryStepsSum()
     }
     
     
     override func viewDidAppear(animated: Bool) {
         widgetPerformUpdateWithCompletionHandler { (NCUpdateResult) -> Void in
-            self.updateStepsCountLabel()
+        //self.queryStepsSum()
         }
     }
     
@@ -32,8 +32,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
-        requestHealthKitAuthorization()
-        
+        self.queryStepsSum()
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
@@ -46,20 +45,20 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var stepsCountLabel: UILabel!
     
     func updateStepsCountLabel() {
-        requestHealthKitAuthorization()
+        self.queryStepsSum()
     }
     
-    func requestHealthKitAuthorization() {
-        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount!, healthKitManager.distanceCount!)
-        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as NSSet as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
-            if success {
-                self.queryStepsSum()
-                //self.querySteps()
-            } else {
-                print(error!.description)
-            }
-            })
-    }
+//    func requestHealthKitAuthorization() {
+//        let dataTypesToRead = NSSet(objects: healthKitManager.stepsCount!, healthKitManager.distanceCount!)
+//        healthKitManager.healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as NSSet as? Set<HKObjectType>, completion: { [unowned self] (success, error) in
+//            if success {
+//                self.queryStepsSum()
+//                //self.querySteps()
+//            } else {
+//                print(error!.description)
+//            }
+//            })
+//    }
     
     func queryStepsSum() {
         let sumOption = HKStatisticsOptions.CumulativeSum
